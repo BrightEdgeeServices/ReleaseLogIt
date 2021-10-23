@@ -1,11 +1,16 @@
-"""Project Short Description (default ini)
+"""ReleaseIt manages release notes for Python projects.
 
-Project long description or extended summary goes in here (default ini)
+ReleaseIt keeps release notes for Python projects in a dict structure.
+It aims to standardise, facilitate and automate the management of
+release notes when publishing a project to Git, GitHub, PyPI and
+ReadTheDocs.  It is developed as part of the PackageIt project, but can
+be used independently as well.
 """
 
 import logging
 from pathlib import Path
-from termcolor import colored
+import tempfile
+import toml
 from beetools.beearchiver import Archiver
 
 _PROJ_DESC = __doc__.split("\n")[0]
@@ -15,12 +20,9 @@ _PROJ_VERSION = "0.0.1"
 
 
 class ReleaseIt:
-    """Class short description one-liner goes here.
+    """ReleaseIt manages release notes for Python projects."""
 
-    Class multi-liner detail description goes here.
-    """
-
-    def __init__(self, p_parent_log_name, p_logger=False, p_verbose=True):
+    def __init__(self, p_parent_log_name, p_dir, p_logger=False, p_verbose=True):
         """Initialize the class
 
         Parameters
@@ -28,6 +30,8 @@ class ReleaseIt:
         p_parent_log_name : str
             Name of the parent.  In combination witt he class name it will
             form the logger name.
+        p_dir : Path
+            Directory path where the release notes are or will be created in.
         p_logger : bool, default = False
             Activate the logger
         p_verbose: bool, default = True
@@ -44,37 +48,43 @@ class ReleaseIt:
 
         Examples
         --------
-        # No proper doctest (<<<) because it is os dependent
+        >>> import tempfile
+        >>> from pathlib import Path
+        >>> rit = ReleaseIt('ReleaseIt', Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
+        >>> rit.release_pth # doctest: +ELLIPSIS
+        WindowsPath('.../release.toml')
         """
         self.success = True
         if p_logger:
-            self.log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
+            self._log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
             self.logger = logging.getLogger(self._log_name)
         self.verbose = p_verbose
 
-    def method_1(self):
-        """Method short description one-liner goes here.
+        self.release_pth = Path(p_dir, "release.toml")
+        if not self.release_pth.exists():
+            self._create_release_config()
+        self.release_cfg = toml.load(self.release_pth)
+        pass
 
-        Class multi-liner detail description goes here.
+    def _create_release_config(self):
+        """Create the "release.toml" configuration file.
+
+        Create the "release.toml" configuration file with the default
+        contents as if it is the first release (0.0.1).  If the file
+        already exists, it will be overwritten.
+        This method is called during instantiation of the class.
 
         Parameters
         ----------
 
         Returns
         -------
-
-        See Also
-        --------
-
-        Notes
-        -----
-
-        Examples
-        --------
-        # No proper doctest (<<<) because it is os dependent
+        release_pth : Path
+            Path to the "release.toml" file.
         """
-        print(colored("Testing ReleaseIt...", "yellow"))
-        return True
+        contents = """[release]\n[release.0]\n[release.0.0]\n1 = [\n    'Creation of the project',\n]\n"""
+        self.release_pth.write_text(contents)
+        return self.release_pth
 
 
 def do_examples(p_cls=True):
@@ -91,27 +101,19 @@ def do_examples(p_cls=True):
 
     Returns
     -------
+    success : boolean
+        Execution status of the method
 
-    See Also
-    --------
-
-    Notes
-    -----
-
-    Examples
-    --------
-    # No proper doctest (<<<) because it is os dependent
     """
     do_example1(p_cls)
-    do_example2(p_cls)
 
 
 def do_example1(p_cls=True):
     """A working example of the implementation of ReleaseIt.
 
-    Example1 illutrate the following concepts:
-    1. Bla, bla, bla
-    2. Bla, bla, bla
+    Example1 illustrate the following concepts:
+    1. Creates to object
+    2. Create a default 'release.toml' file in teh designated (temp) directory
 
     Parameters
     ----------
@@ -120,57 +122,17 @@ def do_example1(p_cls=True):
 
     Returns
     -------
+    success : boolean
+        Execution status of the method
 
-    See Also
-    --------
-
-    Notes
-    -----
-
-    Examples
-    --------
-    # No proper doctest (<<<) because it is os dependent
     """
     success = True
-    t1_archiver = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
-    t1_archiver.print_header(p_cls=p_cls)
-    t1_releaseit = ReleaseIt(_PROJ_NAME)
-    t1_releaseit.method_1()
-    t1_archiver.print_footer()
-    return success
-
-
-def do_example2(p_cls=True):
-    """Another working example of the implementation of ReleaseIt.
-
-    Example2 illustrate the following concepts:
-    1. Bla, bla, bla
-    2. Bla, bla, bla
-
-    Parameters
-    ----------
-    p_cls : bool, default = True
-        Clear the screen or not at startup of Archiver
-
-    Returns
-    -------
-
-    See Also
-    --------
-
-    Notes
-    -----
-
-    Examples
-    --------
-    # No proper doctest (<<<) because it is os dependent
-    """
-    success = True
-    t2_archiver = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
-    t2_archiver.print_header(p_cls=p_cls)
-    t2_releaseit = ReleaseIt(_PROJ_NAME)
-    t2_releaseit.method_1()
-    t2_archiver.print_footer()
+    archiver = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
+    archiver.print_header(p_cls=p_cls)
+    releaseit = ReleaseIt(_PROJ_NAME, Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
+    print(releaseit.release_pth)
+    print(releaseit.release_cfg)
+    archiver.print_footer()
     return success
 
 
