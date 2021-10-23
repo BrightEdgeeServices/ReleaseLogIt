@@ -19,3 +19,4 @@ sphinx
 black
 beetools
 configparserext
+pytest

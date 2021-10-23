@@ -22,40 +22,29 @@ _PROJ_VERSION = "0.0.1"
 class ReleaseIt:
     """ReleaseIt manages release notes for Python projects."""
 
-    def __init__(self, p_parent_log_name, p_dir, p_logger=False, p_verbose=True):
+    def __init__(self, p_dir, p_parent_log_name="", p_verbose=True):
         """Initialize the class
 
         Parameters
         ----------
-        p_parent_log_name : str
-            Name of the parent.  In combination witt he class name it will
-            form the logger name.
         p_dir : Path
             Directory path where the release notes are or will be created in.
-        p_logger : bool, default = False
-            Activate the logger
+        p_parent_log_name : str, default = ''
+            Name of the parent.  In combination witt he class name it will
+            form the logger name.
         p_verbose: bool, default = True
             Write messages to the console.
-
-        Returns
-        -------
-
-        See Also
-        --------
-
-        Notes
-        -----
 
         Examples
         --------
         >>> import tempfile
         >>> from pathlib import Path
-        >>> rit = ReleaseIt('ReleaseIt', Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
+        >>> rit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
         >>> rit.release_pth # doctest: +ELLIPSIS
         WindowsPath('.../release.toml')
         """
         self.success = True
-        if p_logger:
+        if p_parent_log_name:
             self._log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
             self.logger = logging.getLogger(self._log_name)
         self.verbose = p_verbose
@@ -129,7 +118,7 @@ def do_example1(p_cls=True):
     success = True
     archiver = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
     archiver.print_header(p_cls=p_cls)
-    releaseit = ReleaseIt(_PROJ_NAME, Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
+    releaseit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
     print(releaseit.release_pth)
     print(releaseit.release_cfg)
     archiver.print_footer()

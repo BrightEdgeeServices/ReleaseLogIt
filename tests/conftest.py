@@ -4,8 +4,8 @@ Define the fixture functions in this file to make them accessible across multipl
 """
 
 
-import tempfile
 from pathlib import Path
+import pytest
 from beetools.beearchiver import Archiver
 from beetools.beeutils import rm_tree
 
@@ -16,14 +16,20 @@ _PROJ_NAME = _PROJ_PATH.stem
 _PROJ_VERSION = "0.0.1"
 
 
+@pytest.fixture
+def contnets_def():
+    return """'[release]\n[release.0]\n[release.0.0]\n1 = [\n    'Creation of the project',\n]\n"""
+
+
 b_tls = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
 
 
-def setup_env():
+@pytest.fixture
+def setup_env(tmp_path):
     """Setup the environment base structure"""
-    working_dir = Path(tempfile.mkdtemp(prefix=_PROJ_NAME))
+    working_dir = tmp_path
+    yield working_dir
     rm_tree(working_dir)
-    return working_dir
 
 
 del b_tls
