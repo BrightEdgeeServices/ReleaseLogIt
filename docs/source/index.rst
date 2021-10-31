@@ -43,7 +43,7 @@ ReleaseIt
     :alt: GitHub Actions - CI
     :target: https://github.com/hendrikdutoit/ReleaseIt/actions/workflows/ci.yaml
 
-.. image:: https://img.shields.io/testpypi/v/ReleaseIt
+.. image:: https://img.shields.io/pypi/v/ReleaseIt
     :alt: PyPi
 
 Project Short Description (default ini)

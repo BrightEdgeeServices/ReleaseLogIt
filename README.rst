@@ -34,33 +34,58 @@
     :alt: GitHub Actions - CI
     :target: https://github.com/hendrikdutoit/ReleaseIt/actions/workflows/ci.yaml
 
-.. image:: https://img.shields.io/testpypi/v/ReleaseIt
+.. image:: https://img.shields.io/pypi/v/ReleaseIt
     :alt: PyPi
 
-Project Short Description (default ini)
+ReleaseIt manages release notes for Python projects.
 
-    Project long description or extended summary goes in here (default ini)
+    ReleaseIt keeps release notes for Python projects in a dict structure. It aims to standardise, facilitate and automate the management of release notes when publishing a project to GitHub, PyPI and ReadTheDocs. It is developed as part of the PackageIt project, but can be used independently as well. See also https://pypi.org/project/PackageIt/
 
-============
-Installation
-============
+=======
+Testing
+=======
 
-To install the latest release on PyPI, simply run:
+This project uses ``pytest`` to run tests and also to test docstring examples.
+
+Install the test dependencies.
 
 .. code-block:: bash
 
-    $ pip install releaseit
+    $ pip install - r requirements_test.txt
 
-
-=======
-Example
-=======
+Run the tests.
 
 .. code-block:: bash
 
-    >>> import releaseit
-    >>> import tempfile
-    >>> from pathlib import Path
-    >>> releaseit = releaseit.ReleaseIt('ReleaseIt', Path(tempfile.mkdtemp()))
-    >>> releaseit.release_pth
-    >>> print(releaseit.release_cfg)
+    $ pytest tests
+    === XXX passed in SSS seconds ===
+
+==========
+Developing
+==========
+
+This project uses ``black`` to format code and ``flake8`` for linting. We also support ``pre-commit`` to ensure these have been run. To configure your local environment please install these development dependencies and set up the commit hooks.
+
+.. code-block:: bash
+
+    $ pip install black flake8 pre-commit
+    $ pre-commit install
+
+=========
+Releasing
+=========
+
+Releases are published automatically when a tag is pushed to GitHub.
+
+.. code-block:: bash
+
+    # Set next version number
+    export RELEASE = x.x.x
+    
+    # Create tags
+    git commit --allow -empty -m "Release $RELEASE"
+    git tag -a $RELEASE -m "Version $RELEASE"
+    
+    # Push
+    git push upstream --tags
+
