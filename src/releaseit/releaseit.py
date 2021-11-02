@@ -18,7 +18,16 @@ from beetools.beearchiver import Archiver
 _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
 _PROJ_NAME = _PROJ_PATH.stem
-_PROJ_VERSION = "0.0.1"
+_PROJ_VERSION = "0.0.2"
+
+_DEF_TOML_CONTENTS = """[release]
+[release.0]
+[release.0.0.1.Detail]
+Description = 'Creation of the project'
+[release.0.0.1.Changes]
+File001 = ['filename01.py',"Insert change description here."]
+File002 = ['filename02.txt',"Insert change description here."]
+"""
 
 
 class ReleaseIt:
@@ -73,7 +82,7 @@ class ReleaseIt:
         release_pth : Path
             Path to the "release.toml" file.
         """
-        contents = """[release]\n[release.0]\n[release.0.0]\n1 = [\n    'Creation of the project',\n]\n"""
+        contents = _DEF_TOML_CONTENTS
         self.release_pth.write_text(contents)
         return self.release_pth
 
