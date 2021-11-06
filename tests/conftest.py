@@ -16,11 +16,6 @@ _PROJ_NAME = _PROJ_PATH.stem
 _PROJ_VERSION = "0.0.1"
 
 
-@pytest.fixture
-def contnets_def():
-    return """'[release]\n[release.0]\n[release.0.0]\n1 = [\n    'Creation of the project',\n]\n"""
-
-
 b_tls = Archiver(_PROJ_NAME, _PROJ_VERSION, _PROJ_DESC, _PROJ_PATH)
 
 

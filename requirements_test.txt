@@ -20,3 +20,4 @@ beetools
 configparserext
 termcolor
 twine
+pytest
