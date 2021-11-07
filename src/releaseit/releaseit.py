@@ -20,16 +20,14 @@ _PROJ_PATH = Path(__file__)
 _PROJ_NAME = _PROJ_PATH.stem
 _PROJ_VERSION = "0.0.3"
 
-_TOML_CONTENTS_DEF = """[release]
-[release.0]
-[release.0.0.0.Detail]
+_TOML_CONTENTS_DEF = """
+[0.0.0]
 Version = '0.0.0'
 Header = 'Creation of the project'
-Description01 = 'List all the changes to the project here.'
-Description02 = 'Changes listed here will be in the release notes under the above heading.'
-[release.0.0.0.Changes]
-File001 = ['filename01.py','Insert change description here.']
-File002 = ['filename02.txt','Insert change description here.']
+Description = ['List all the changes to the project here.',
+               'Changes listed here will be in the release notes under the above heading.']
+FileChanges = [['filename01.py','Insert change description here.'],
+               ['filename02.txt','Insert change description here.']]
 """
 
 
@@ -80,7 +78,7 @@ class ReleaseIt:
 
     def __next__(self):
         if self.curr_pos < self.element_cntr:
-            element = self.release_notes["release"][self.seq[self.curr_pos][0]][
+            element = self.release_notes[self.seq[self.curr_pos][0]][
                 self.seq[self.curr_pos][1]
             ][self.seq[self.curr_pos][2]]
             self.curr_pos += 1
@@ -108,9 +106,9 @@ class ReleaseIt:
         return self.src_pth
 
     def _get_config_list(self):
-        for major in self.release_notes["release"]:
-            for minor in self.release_notes["release"][major]:
-                for patch in self.release_notes["release"][major][minor]:
+        for major in self.release_notes:
+            for minor in self.release_notes[major]:
+                for patch in self.release_notes[major][minor]:
                     self.seq.append([major, minor, patch])
         self.seq
 
