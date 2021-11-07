@@ -755,6 +755,16 @@ class TestReleaseIt:
         with pytest.raises(StopIteration):
             assert next(elements)
 
+    def test_has_header(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
+
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+
+        assert t_releaseit.has_header("Release 1.1.1.")
+        pass
+
     def test_do_example(self):
         assert releaseit.do_examples()
         pass

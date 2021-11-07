@@ -118,6 +118,14 @@ class ReleaseIt:
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[0])
         return self.seq
 
+    def has_header(self, header):
+        release = None
+        for seq in self.seq:
+            if self.release_notes[seq[0]][seq[1]][seq[2]]["Header"] == header:
+                release = self.release_notes[seq[0]][seq[1]][seq[2]]
+                break
+        return release
+
 
 def do_examples(p_cls=True):
     """A collection of implementation examples for ReleaseIt.
