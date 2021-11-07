@@ -23,6 +23,7 @@ _PROJ_VERSION = "0.0.3"
 _TOML_CONTENTS_DEF = """[release]
 [release.0]
 [release.0.0.0.Detail]
+Version = '0.0.0'
 Header = 'Creation of the project'
 Description01 = 'List all the changes to the project here.'
 Description02 = 'Changes listed here will be in the release notes under the above heading.'
@@ -52,9 +53,9 @@ class ReleaseIt:
         --------
         >>> import tempfile
         >>> from pathlib import Path
-        >>> rit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
-        >>> rit.src_pth # doctest: +ELLIPSIS
-        WindowsPath('.../release.toml')
+        >>> t_releaseit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
+        >>> t_releaseit.seq
+        [['0', '0', '0']]
         """
         self.success = True
         if p_parent_log_name:

@@ -9,7 +9,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="ReleaseIt",
-    version="0.0.5",
+    version="0.0.6",
     author="Hendrik du Toit",
     author_email="hendrik@brightedge.co.za",
     description="Insert project description here",
