@@ -112,17 +112,23 @@ class ReleaseIt:
                     self.seq.append([major, minor, patch])
         self.seq
 
+    def get_release_notes(self, p_title):
+        for rel in self.seq:
+            if self.release_notes[rel[0]][rel[1]][rel[2]]["Title"] == p_title:
+                return self.release_notes[rel[0]][rel[1]][rel[2]]
+        return None
+
+    def has_title(self, p_title):
+        for seq in self.seq:
+            if self.release_notes[seq[0]][seq[1]][seq[2]]["Title"] == p_title:
+                return True
+        return False
+
     def _sort(self):
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[2])
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[1])
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[0])
         return self.seq
-
-    def has_title(self, title):
-        for seq in self.seq:
-            if self.release_notes[seq[0]][seq[1]][seq[2]]["Title"] == title:
-                return True
-        return False
 
 
 def do_examples(p_cls=True):

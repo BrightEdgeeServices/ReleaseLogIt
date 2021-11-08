@@ -755,6 +755,27 @@ class TestReleaseIt:
         with pytest.raises(StopIteration):
             assert next(elements)
 
+    def test_get_release_notes(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
+
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+
+        assert t_releaseit.get_release_notes("Release 1.1.1.") == {
+            "Title": "Release 1.1.1.",
+            "Description": [
+                "Description line 1 of release 1.1.1",
+                "Description line 2 of release 1.1.1",
+            ],
+            "Version": "1.1.1",
+            "FileChanges": [
+                ["File001.py", "File001 1.1.1"],
+                ["File002.txt", "File002 1.1.1"],
+            ],
+        }
+        assert t_releaseit.get_release_notes("Release 9.9.9.") is None
+
     def test_has_title(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
@@ -763,6 +784,7 @@ class TestReleaseIt:
         t_releaseit = releaseit.ReleaseIt(working_dir)
 
         assert t_releaseit.has_title("Release 1.1.1.")
+        assert not t_releaseit.has_title("Release 9.9.9.")
         pass
 
     def test_do_example(self):
