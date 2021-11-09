@@ -86,6 +86,10 @@ class ReleaseIt:
         else:
             raise StopIteration
 
+    def add_release_note(self, p_release_note):
+        self._check_release_note(p_release_note)
+        pass
+
     def _create_def_config(self):
         """Create the "release.toml" configuration file.
 
@@ -110,9 +114,9 @@ class ReleaseIt:
             for minor in self.release_notes[major]:
                 for patch in self.release_notes[major][minor]:
                     self.seq.append([major, minor, patch])
-        self.seq
+        return self.seq
 
-    def get_release_notes(self, p_title):
+    def get_release_note(self, p_title):
         for rel in self.seq:
             if self.release_notes[rel[0]][rel[1]][rel[2]]["Title"] == p_title:
                 return self.release_notes[rel[0]][rel[1]][rel[2]]
@@ -129,6 +133,69 @@ class ReleaseIt:
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[1])
         self.seq = sorted(self.seq, key=lambda release_notes: release_notes[0])
         return self.seq
+
+    def _check_release_note(self, p_release_note):
+        if "Description" not in p_release_note.keys():
+            return False
+        if not isinstance(p_release_note["Description"], list):
+            return False
+        if len(p_release_note["Description"]) <= 0:
+            return False
+        for desc in p_release_note["Description"]:
+            if not isinstance(desc, str):
+                return False
+
+        if "FileChanges" not in p_release_note.keys():
+            return False
+        if not isinstance(p_release_note["FileChanges"], list):
+            return False
+        for i, item in enumerate(p_release_note["FileChanges"]):
+            if not isinstance(item[0], str):
+                return False
+            if not isinstance(item[1], str):
+                return False
+
+        if "Title" not in p_release_note.keys():
+            return False
+        if self.has_title(p_release_note["Title"]):
+            return False
+
+        if "Version" not in p_release_note.keys():
+            return False
+        release_parts = p_release_note["Version"].split(".")
+        if not release_parts[0].isnumeric():
+            return False
+        if not release_parts[1].isnumeric():
+            return False
+        if not release_parts[2].isnumeric():
+            return False
+        if release_parts in self.seq:
+            return False
+
+        return True
+
+    def _validate_release_notes(self, p_release_notes):
+        for major in p_release_notes:
+            if not isinstance(major, str):
+                return False
+            if not major.isnumeric():
+                return False
+            for minor in p_release_notes[major]:
+                if not isinstance(minor, str):
+                    return False
+                if not minor.isnumeric():
+                    return False
+                for patch in p_release_notes[major][minor]:
+                    if not isinstance(patch, str):
+                        return False
+                    if not patch.isnumeric():
+                        return False
+                    release = p_release_notes[major][minor][patch]
+                    if not "{}.{}.{}".format(major, minor, patch) == release["Version"]:
+                        return False
+                    if not self._check_release_note(release):
+                        return False
+        return True
 
 
 def do_examples(p_cls=True):

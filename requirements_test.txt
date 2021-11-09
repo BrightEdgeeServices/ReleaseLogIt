@@ -5,6 +5,7 @@
 # packageit\packageit_pypi.ini and
 # D:\Dropbox\Projects\ReleaseIt\.packageit\packageit.ini
 #===================================================================
+copy
 pip
 wheel
 beetools
@@ -19,4 +20,5 @@ pytest-cov
 sphinx-autobuild
 sphinx
 termcolor
+toml
 twine

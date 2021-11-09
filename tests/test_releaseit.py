@@ -1,5 +1,6 @@
 """Testing releaseit__init__()"""
 
+import copy
 from pathlib import Path
 import pytest
 from beetools.beearchiver import Archiver
@@ -10,6 +11,7 @@ _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
 _PROJ_NAME = _PROJ_PATH.stem
 _PROJ_VERSION = "0.0.3"
+
 
 _TOML_CONTENTS_DEF_STRUCT = {
     "0": {
@@ -762,7 +764,7 @@ class TestReleaseIt:
 
         t_releaseit = releaseit.ReleaseIt(working_dir)
 
-        assert t_releaseit.get_release_notes("Release 1.1.1.") == {
+        assert t_releaseit.get_release_note("Release 1.1.1.") == {
             "Title": "Release 1.1.1.",
             "Description": [
                 "Description line 1 of release 1.1.1",
@@ -774,7 +776,7 @@ class TestReleaseIt:
                 ["File002.txt", "File002 1.1.1"],
             ],
         }
-        assert t_releaseit.get_release_notes("Release 9.9.9.") is None
+        assert t_releaseit.get_release_note("Release 9.9.9.") is None
 
     def test_has_title(self, setup_env):
         """Assert class __init__"""
@@ -785,6 +787,180 @@ class TestReleaseIt:
 
         assert t_releaseit.has_title("Release 1.1.1.")
         assert not t_releaseit.has_title("Release 9.9.9.")
+        pass
+
+    def test_check_release_note(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+        release_note = {
+            "Description": [
+                "Description line 1.",
+                "Description line 2.",
+            ],
+            "FileChanges": [
+                ["filename01.py", "Insert change description here."],
+                ["filename02.txt", "Insert change description here."],
+            ],
+            "Title": "Release change 9.9.9",
+            "Version": "9.9.9",
+        }
+
+        assert t_releaseit._check_release_note(release_note)
+
+        r_n = copy.deepcopy(release_note)
+        del r_n["Description"]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Description"] = "abc"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Description"] = []
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Description"] = ["abc", 123]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        del r_n["FileChanges"]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["FileChanges"] = "abc"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["FileChanges"] = [["abc", "123"], ["def", 456]]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        del r_n["Title"]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Title"] = "Creation of the project"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Version"] = "a.9.9"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Version"] = "9.q.9"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Version"] = "9.9.q"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["Version"] = "0.0.0"
+        assert not t_releaseit._check_release_note(r_n)
+
+        pass
+
+    def test_validate_release_notes(self, setup_env):
+        working_dir = setup_env
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+        release_note = {
+            "0": {
+                "0": {
+                    "1": {
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Description": [
+                            "Changes for 0.0.1 are listed here.",
+                            "Add as many description lines as you like.",
+                        ],
+                        "Title": "Release 0.0.1",
+                        "Version": "0.0.1",
+                    },
+                    "2": {
+                        "FileChanges": [
+                            ["README.rst", "Update with latest changes."],
+                            ["releaseit.py", "Update with latest changes."],
+                        ],
+                        "Description": [
+                            "Changes for 0.0.2 are listed here.",
+                            "Add as many description lines as you like.",
+                        ],
+                        "Title": "Release 0.0.2",
+                        "Version": "0.0.2",
+                    },
+                }
+            },
+            "1": {
+                "1": {
+                    "1": {
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Description": [
+                            "Changes for 1.1.1 are listed here.",
+                            "Add as many description lines as you like.",
+                        ],
+                        "Title": "Release 1.1.1",
+                        "Version": "1.1.1",
+                    },
+                    "3": {
+                        "FileChanges": [
+                            ["README.rst", "Update with latest changes."],
+                            ["releaseit.py", "Update with latest changes."],
+                        ],
+                        "Description": [
+                            "Changes for 1.1.3 are listed here.",
+                            "Add as many description lines as you like.",
+                        ],
+                        "Title": "Release 1.1.3",
+                        "Version": "1.1.3",
+                    },
+                }
+            },
+        }
+
+        assert t_releaseit._validate_release_notes(release_note)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["a"] = r_n["0"]
+        del r_n["0"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n[0] = r_n["0"].copy()
+        del r_n["0"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["1"]["a"] = r_n["1"]["1"]
+        del r_n["1"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["1"][1] = r_n["1"]["1"]
+        del r_n["1"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["1"]["1"]["a"] = r_n["1"]["1"]["1"]
+        del r_n["1"]["1"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["1"]["1"][1] = r_n["1"]["1"]["1"]
+        del r_n["1"]["1"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["0"]["0"]["0"] = r_n["0"]["0"]["1"]
+        del r_n["0"]["0"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
         pass
 
     def test_do_example(self):
