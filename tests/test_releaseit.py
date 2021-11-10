@@ -757,6 +757,120 @@ class TestReleaseIt:
         with pytest.raises(StopIteration):
             assert next(elements)
 
+    def test_add_release_note(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        release_note_100 = {
+            "Description": [
+                "Description line 1.",
+                "Description line 2.",
+            ],
+            "FileChanges": [
+                ["filename01.py", "Insert change description here."],
+                ["filename02.txt", "Insert change description here."],
+            ],
+            "Title": "Release change 1.0.0",
+            "Version": "1.0.0",
+        }
+        release_note_010 = {
+            "Description": [
+                "Description line 1.",
+                "Description line 2.",
+            ],
+            "FileChanges": [
+                ["filename01.py", "Insert change description here."],
+                ["filename02.txt", "Insert change description here."],
+            ],
+            "Title": "Release change 0.1.0",
+            "Version": "0.1.0",
+        }
+        release_note_001 = {
+            "Description": [
+                "Description line 1.",
+                "Description line 2.",
+            ],
+            "FileChanges": [
+                ["filename01.py", "Insert change description here."],
+                ["filename02.txt", "Insert change description here."],
+            ],
+            "Title": "Release change 0.0.1",
+            "Version": "0.0.1",
+        }
+
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+        t_releaseit.add_release_note(release_note_100)
+        t_releaseit.add_release_note(release_note_010)
+        t_releaseit.add_release_note(release_note_001)
+
+        assert t_releaseit.release_notes == {
+            "0": {
+                "0": {
+                    "0": {
+                        "Description": [
+                            "List all the changes to the project here.",
+                            "Changes listed here will be in the release notes under the above heading.",
+                        ],
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Title": "Creation of the project",
+                        "Version": "0.0.0",
+                    },
+                    "1": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Title": "Release change 0.0.1",
+                        "Version": "0.0.1",
+                    },
+                },
+                "1": {
+                    "0": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Title": "Release change 0.1.0",
+                        "Version": "0.1.0",
+                    },
+                },
+            },
+            "1": {
+                "0": {
+                    "0": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "FileChanges": [
+                            ["filename01.py", "Insert change description here."],
+                            ["filename02.txt", "Insert change description here."],
+                        ],
+                        "Title": "Release change 1.0.0",
+                        "Version": "1.0.0",
+                    }
+                }
+            },
+        }
+        assert t_releaseit.seq == [
+            ["0", "0", "0"],
+            ["0", "0", "1"],
+            ["0", "1", "0"],
+            ["1", "0", "0"],
+        ]
+        assert t_releaseit.element_cntr == 4
+        pass
+
     def test_get_release_notes(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
@@ -833,7 +947,11 @@ class TestReleaseIt:
         assert not t_releaseit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        r_n["FileChanges"] = [["abc", "123"], ["def", 456]]
+        r_n["FileChanges"] = [[123, "def"], ["ghi", "jkl"]]
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        r_n["FileChanges"] = [["abc", "def"], ["ghi", 456]]
         assert not t_releaseit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
@@ -842,6 +960,10 @@ class TestReleaseIt:
 
         r_n = copy.deepcopy(release_note)
         r_n["Title"] = "Creation of the project"
+        assert not t_releaseit._check_release_note(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        del r_n["Version"]
         assert not t_releaseit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
@@ -959,6 +1081,10 @@ class TestReleaseIt:
         r_n = copy.deepcopy(release_note)
         r_n["0"]["0"]["0"] = r_n["0"]["0"]["1"]
         del r_n["0"]["0"]["1"]
+        assert not t_releaseit._validate_release_notes(r_n)
+
+        r_n = copy.deepcopy(release_note)
+        del r_n["0"]["0"]["1"]["Description"]
         assert not t_releaseit._validate_release_notes(r_n)
 
         pass

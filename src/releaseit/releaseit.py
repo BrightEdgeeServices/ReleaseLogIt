@@ -64,12 +64,17 @@ class ReleaseIt:
         self.src_pth = Path(p_src, "release.toml")
         if not self.src_pth.exists():
             self._create_def_config()
-        self.release_notes = toml.load(self.src_pth)
+        self.release_notes = {}
+        release_notes = toml.load(self.src_pth)
         self.seq = []
-        self._get_config_list()
-        self._sort()
-        self.curr_pos = 0
-        self.element_cntr = len(self.seq)
+        self.curr_pos = -1
+        self.element_cntr = 0
+        if self._validate_release_notes(release_notes):
+            self.release_notes = release_notes
+            self._get_config_list()
+            self._sort()
+            self.curr_pos = 0
+            self.element_cntr = len(self.seq)
         pass
 
     def __iter__(self):
@@ -87,7 +92,24 @@ class ReleaseIt:
             raise StopIteration
 
     def add_release_note(self, p_release_note):
-        self._check_release_note(p_release_note)
+        if self._check_release_note(p_release_note):
+            release_parts = p_release_note["Version"].split(".")
+            if release_parts[0] in self.release_notes.keys():
+                if release_parts[1] in self.release_notes[release_parts[0]].keys():
+                    self.release_notes[release_parts[0]][release_parts[1]][
+                        release_parts[2]
+                    ] = p_release_note
+                else:
+                    self.release_notes[release_parts[0]][release_parts[1]] = {
+                        release_parts[2]: p_release_note
+                    }
+            else:
+                self.release_notes[release_parts[0]] = {
+                    release_parts[1]: {release_parts[2]: p_release_note}
+                }
+            self.seq.append(release_parts)
+            self._sort()
+            self.element_cntr = len(self.seq)
         pass
 
     def _create_def_config(self):
