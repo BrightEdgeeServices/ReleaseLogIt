@@ -40,7 +40,7 @@ Version =  '0.0.0'
 FileChanges = [['filename01.py',"Insert change description here."],
 ['filename02.txt',"Insert change description here."]]
 [0.0.1]
-Title = 'This is a new release .'
+Title = 'This is a new release.'
 Description = ['Changes for 0.0.1 are listed here.',
 'Add as many description lines as you like.']
 Version =  '0.0.1'
@@ -71,7 +71,7 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                     "Changes for 0.0.1 are listed here.",
                     "Add as many description lines as you like.",
                 ],
-                "Title": "This is a new release .",
+                "Title": "This is a new release.",
                 "Version": "0.0.1",
             },
         }
@@ -751,7 +751,7 @@ class TestReleaseIt:
                 ["README.rst", "Update with latest changes."],
                 ["releaseit.py", "Update with latest changes."],
             ],
-            "Title": "This is a new release .",
+            "Title": "This is a new release.",
             "Version": "0.0.1",
         }
         with pytest.raises(StopIteration):
@@ -891,6 +891,20 @@ class TestReleaseIt:
             ],
         }
         assert t_releaseit.get_release_note("Release 9.9.9.") is None
+
+    def test_get_release_titles(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXIST_CONTENTS)
+
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+
+        assert t_releaseit.get_release_titles() == [
+            "Creation of the project",
+            "This is a new release.",
+        ]
+        assert t_releaseit.success
+        pass
 
     def test_has_title(self, setup_env):
         """Assert class __init__"""

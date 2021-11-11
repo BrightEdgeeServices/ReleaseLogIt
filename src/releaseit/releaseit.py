@@ -144,6 +144,14 @@ class ReleaseIt:
                 return self.release_notes[rel[0]][rel[1]][rel[2]]
         return None
 
+    def get_release_titles(self):
+        titles = []
+        for release in self.seq:
+            titles.append(
+                self.release_notes[release[0]][release[1]][release[2]]["Title"]
+            )
+        return titles
+
     def has_title(self, p_title):
         for seq in self.seq:
             if self.release_notes[seq[0]][seq[1]][seq[2]]["Title"] == p_title:
