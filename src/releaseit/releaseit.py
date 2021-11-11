@@ -138,9 +138,15 @@ class ReleaseIt:
                     self.rel_list.append([major, minor, patch])
         return self.rel_list
 
-    def get_release_note(self, p_title):
+    def get_release_note_by_title(self, p_title):
         for rel in self.rel_list:
             if self.rel_notes[rel[0]][rel[1]][rel[2]]["Title"] == p_title:
+                return self.rel_notes[rel[0]][rel[1]][rel[2]]
+        return None
+
+    def get_release_note_by_version(self, p_version):
+        for rel in self.rel_list:
+            if self.rel_notes[rel[0]][rel[1]][rel[2]]["Version"] == p_version:
                 return self.rel_notes[rel[0]][rel[1]][rel[2]]
         return None
 
