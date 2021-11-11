@@ -651,8 +651,8 @@ class TestReleaseIt:
         """Assert class __init__"""
         working_dir = setup_env
         t_releaseit = releaseit.ReleaseIt(working_dir, p_parent_log_name=_PROJ_NAME)
-        assert t_releaseit.release_notes == _TOML_CONTENTS_DEF_STRUCT
-        assert t_releaseit.seq == [["0", "0", "0"]]
+        assert t_releaseit.rel_notes == _TOML_CONTENTS_DEF_STRUCT
+        assert t_releaseit.rel_list == [["0", "0", "0"]]
         assert t_releaseit.src_pth.exists()
         assert t_releaseit.success
         pass
@@ -664,8 +664,8 @@ class TestReleaseIt:
 
         t_releaseit = releaseit.ReleaseIt(working_dir)
 
-        assert t_releaseit.release_notes == _TOML_CONTENTS_EXIST_STRUCT
-        assert t_releaseit.seq == [["0", "0", "0"], ["0", "0", "1"]]
+        assert t_releaseit.rel_notes == _TOML_CONTENTS_EXIST_STRUCT
+        assert t_releaseit.rel_list == [["0", "0", "0"], ["0", "0", "1"]]
         assert t_releaseit.src_pth.exists()
         assert t_releaseit.success
         pass
@@ -677,8 +677,8 @@ class TestReleaseIt:
 
         t_releaseit = releaseit.ReleaseIt(working_dir)
 
-        assert t_releaseit.release_notes == _TOML_CONTENTS_EXTENDED_STRUCT
-        assert t_releaseit.seq == [
+        assert t_releaseit.rel_notes == _TOML_CONTENTS_EXTENDED_STRUCT
+        assert t_releaseit.rel_list == [
             ["0", "0", "0"],
             ["0", "0", "1"],
             ["0", "0", "2"],
@@ -802,7 +802,7 @@ class TestReleaseIt:
         t_releaseit.add_release_note(release_note_010)
         t_releaseit.add_release_note(release_note_001)
 
-        assert t_releaseit.release_notes == {
+        assert t_releaseit.rel_notes == {
             "0": {
                 "0": {
                     "0": {
@@ -862,13 +862,13 @@ class TestReleaseIt:
                 }
             },
         }
-        assert t_releaseit.seq == [
+        assert t_releaseit.rel_list == [
             ["0", "0", "0"],
             ["0", "0", "1"],
             ["0", "1", "0"],
             ["1", "0", "0"],
         ]
-        assert t_releaseit.element_cntr == 4
+        assert t_releaseit.rel_cntr == 4
         pass
 
     def test_get_release_notes(self, setup_env):

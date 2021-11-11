@@ -52,7 +52,7 @@ class ReleaseIt:
         >>> import tempfile
         >>> from pathlib import Path
         >>> t_releaseit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
-        >>> t_releaseit.seq
+        >>> t_releaseit.rel_list
         [['0', '0', '0']]
         """
         self.success = True
@@ -64,17 +64,17 @@ class ReleaseIt:
         self.src_pth = Path(p_src, "release.toml")
         if not self.src_pth.exists():
             self._create_def_config()
-        self.release_notes = {}
-        release_notes = toml.load(self.src_pth)
-        self.seq = []
+        self.rel_notes = {}
+        rel_notes = toml.load(self.src_pth)
+        self.rel_list = []
         self.curr_pos = -1
-        self.element_cntr = 0
-        if self._validate_release_notes(release_notes):
-            self.release_notes = release_notes
+        self.rel_cntr = 0
+        if self._validate_release_notes(rel_notes):
+            self.rel_notes = rel_notes
             self._get_config_list()
             self._sort()
             self.curr_pos = 0
-            self.element_cntr = len(self.seq)
+            self.rel_cntr = len(self.rel_list)
         pass
 
     def __iter__(self):
@@ -82,10 +82,10 @@ class ReleaseIt:
         return self
 
     def __next__(self):
-        if self.curr_pos < self.element_cntr:
-            element = self.release_notes[self.seq[self.curr_pos][0]][
-                self.seq[self.curr_pos][1]
-            ][self.seq[self.curr_pos][2]]
+        if self.curr_pos < self.rel_cntr:
+            element = self.rel_notes[self.rel_list[self.curr_pos][0]][
+                self.rel_list[self.curr_pos][1]
+            ][self.rel_list[self.curr_pos][2]]
             self.curr_pos += 1
             return element
         else:
@@ -94,22 +94,22 @@ class ReleaseIt:
     def add_release_note(self, p_release_note):
         if self._check_release_note(p_release_note):
             release_parts = p_release_note["Version"].split(".")
-            if release_parts[0] in self.release_notes.keys():
-                if release_parts[1] in self.release_notes[release_parts[0]].keys():
-                    self.release_notes[release_parts[0]][release_parts[1]][
+            if release_parts[0] in self.rel_notes.keys():
+                if release_parts[1] in self.rel_notes[release_parts[0]].keys():
+                    self.rel_notes[release_parts[0]][release_parts[1]][
                         release_parts[2]
                     ] = p_release_note
                 else:
-                    self.release_notes[release_parts[0]][release_parts[1]] = {
+                    self.rel_notes[release_parts[0]][release_parts[1]] = {
                         release_parts[2]: p_release_note
                     }
             else:
-                self.release_notes[release_parts[0]] = {
+                self.rel_notes[release_parts[0]] = {
                     release_parts[1]: {release_parts[2]: p_release_note}
                 }
-            self.seq.append(release_parts)
+            self.rel_list.append(release_parts)
             self._sort()
-            self.element_cntr = len(self.seq)
+            self.rel_cntr = len(self.rel_list)
         pass
 
     def _create_def_config(self):
@@ -132,37 +132,41 @@ class ReleaseIt:
         return self.src_pth
 
     def _get_config_list(self):
-        for major in self.release_notes:
-            for minor in self.release_notes[major]:
-                for patch in self.release_notes[major][minor]:
-                    self.seq.append([major, minor, patch])
-        return self.seq
+        for major in self.rel_notes:
+            for minor in self.rel_notes[major]:
+                for patch in self.rel_notes[major][minor]:
+                    self.rel_list.append([major, minor, patch])
+        return self.rel_list
 
     def get_release_note(self, p_title):
-        for rel in self.seq:
-            if self.release_notes[rel[0]][rel[1]][rel[2]]["Title"] == p_title:
-                return self.release_notes[rel[0]][rel[1]][rel[2]]
+        for rel in self.rel_list:
+            if self.rel_notes[rel[0]][rel[1]][rel[2]]["Title"] == p_title:
+                return self.rel_notes[rel[0]][rel[1]][rel[2]]
         return None
 
     def get_release_titles(self):
         titles = []
-        for release in self.seq:
-            titles.append(
-                self.release_notes[release[0]][release[1]][release[2]]["Title"]
-            )
+        for rel in self.rel_list:
+            titles.append(self.rel_notes[rel[0]][rel[1]][rel[2]]["Title"])
         return titles
 
     def has_title(self, p_title):
-        for seq in self.seq:
-            if self.release_notes[seq[0]][seq[1]][seq[2]]["Title"] == p_title:
+        for seq in self.rel_list:
+            if self.rel_notes[seq[0]][seq[1]][seq[2]]["Title"] == p_title:
                 return True
         return False
 
     def _sort(self):
-        self.seq = sorted(self.seq, key=lambda release_notes: release_notes[2])
-        self.seq = sorted(self.seq, key=lambda release_notes: release_notes[1])
-        self.seq = sorted(self.seq, key=lambda release_notes: release_notes[0])
-        return self.seq
+        self.rel_list = sorted(
+            self.rel_list, key=lambda release_notes: release_notes[2]
+        )
+        self.rel_list = sorted(
+            self.rel_list, key=lambda release_notes: release_notes[1]
+        )
+        self.rel_list = sorted(
+            self.rel_list, key=lambda release_notes: release_notes[0]
+        )
+        return self.rel_list
 
     def _check_release_note(self, p_release_note):
         if "Description" not in p_release_note.keys():
@@ -199,7 +203,7 @@ class ReleaseIt:
             return False
         if not release_parts[2].isnumeric():
             return False
-        if release_parts in self.seq:
+        if release_parts in self.rel_list:
             return False
 
         return True
@@ -273,7 +277,7 @@ def do_example1(p_cls=True):
     archiver.print_header(p_cls=p_cls)
     releaseit = ReleaseIt(Path(tempfile.mkdtemp(prefix=_PROJ_NAME)))
     print(releaseit.src_pth)
-    print(releaseit.release_notes)
+    print(releaseit.rel_notes)
     archiver.print_footer()
     return success
 
