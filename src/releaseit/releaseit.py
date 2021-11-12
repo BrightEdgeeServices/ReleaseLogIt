@@ -237,6 +237,10 @@ class ReleaseIt:
                         return False
         return True
 
+    def write_toml(self):
+        self.src_pth.write_text(toml.dumps(self.rel_notes))
+        pass
+
 
 def do_examples(p_cls=True):
     """A collection of implementation examples for ReleaseIt.

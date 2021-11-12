@@ -33,19 +33,16 @@ _TOML_CONTENTS_DEF_STRUCT = {
 }
 _TOML_CONTENTS_EXIST_CONTENTS = """\
 [0.0.0]
-Title = 'Creation of the project'
-Description = ['List all the changes to the project here.',
-'Changes listed here will be in the release notes under the above heading.']
-Version =  '0.0.0'
-FileChanges = [['filename01.py',"Insert change description here."],
-['filename02.txt',"Insert change description here."]]
+Title = "Creation of the project"
+Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
+Version = "0.0.0"
+FileChanges = [ [ "filename01.py", "Insert change description here.",], [ "filename02.txt", "Insert change description here.",],]
+
 [0.0.1]
-Title = 'This is a new release.'
-Description = ['Changes for 0.0.1 are listed here.',
-'Add as many description lines as you like.']
-Version =  '0.0.1'
-FileChanges = [['README.rst', "Update with latest changes."],
-['releaseit.py', "Update with latest changes."]]
+Title = "This is a new release."
+Description = [ "Changes for 0.0.1 are listed here.", "Add as many description lines as you like.",]
+Version = "0.0.1"
+FileChanges = [ [ "README.rst", "Update with latest changes.",], [ "releaseit.py", "Update with latest changes.",],]
 """
 _TOML_CONTENTS_EXIST_STRUCT = {
     "0": {
@@ -871,6 +868,10 @@ class TestReleaseIt:
         assert t_releaseit.rel_cntr == 4
         pass
 
+    def test_do_example(self):
+        assert releaseit.do_examples()
+        pass
+
     def test_get_release_note_by_title(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
@@ -1124,8 +1125,15 @@ class TestReleaseIt:
 
         pass
 
-    def test_do_example(self):
-        assert releaseit.do_examples()
+    def test_write_toml(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXIST_CONTENTS)
+
+        t_releaseit = releaseit.ReleaseIt(working_dir)
+        t_releaseit.write_toml()
+
+        assert t_releaseit.src_pth.read_text() == _TOML_CONTENTS_EXIST_CONTENTS
         pass
 
 
