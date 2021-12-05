@@ -67,32 +67,35 @@ class ReleaseLogIt:
         self.rel_notes = {}
         rel_notes = toml.load(self.src_pth)
         self.rel_list = []
-        self.curr_pos = -1
+        self.cur_pos = -1
         self.rel_cntr = 0
         if self._validate_release_notes(rel_notes):
             self.rel_notes = rel_notes
             self._get_release_list()
             self._sort()
-            self.curr_pos = 0
+            self.cur_pos = 0
             self.rel_cntr = len(self.rel_list)
         pass
 
     def __iter__(self):
-        self.curr_pos = 0
+        self.cur_pos = 0
         return self
 
     def __next__(self):
-        if self.curr_pos < self.rel_cntr:
-            element = self.rel_notes[self.rel_list[self.curr_pos][0]][
-                self.rel_list[self.curr_pos][1]
-            ][self.rel_list[self.curr_pos][2]]
-            self.curr_pos += 1
+        if self.cur_pos < self.rel_cntr:
+            element = self.rel_notes[self.rel_list[self.cur_pos][0]][
+                self.rel_list[self.cur_pos][1]
+            ][self.rel_list[self.cur_pos][2]]
+            self.cur_pos += 1
             return element
         else:
             raise StopIteration
 
     def __repr__(self):
-        return ".".join(self.rel_list[self.curr_pos])
+        return f"""ReleaseLogIt({self.cur_pos},"{'.'.join(self.rel_list[self.cur_pos])}")"""
+
+    def __str__(self):
+        return f"""{'.'.join(self.rel_list[self.cur_pos])}"""
 
     def add_release_note(self, p_release_note):
         if self._check_release_note(p_release_note):

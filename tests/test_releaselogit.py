@@ -33,15 +33,9 @@ _TOML_CONTENTS_DEF_STRUCT = {
 _TOML_CONTENTS_EXIST_CONTENTS = """\
 [0.0.0]
 Title = "Creation of the project"
-Description = [
-    "List all the changes to the project here."
-    "Changes listed here will be in the release notes under the above heading.",
-]
+Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
 Version = "0.0.0"
-FileChanges = [
-    ["filename01.py", "Insert change description here.",]
-    [ "filename02.txt", "Insert change description here.",],
-]
+FileChanges = [ [ "filename01.py", "Insert change description here.",], [ "filename02.txt", "Insert change description here.",],]
 
 [0.0.1]
 Title = "This is a new release."
@@ -723,7 +717,7 @@ class TestReleaseLogIt:
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
 
         assert isinstance(t_releaselogit, releaselogit.ReleaseLogIt)
-        assert t_releaselogit.curr_pos == 0
+        assert t_releaselogit.cur_pos == 0
         pass
 
     def test__next__(self, setup_env):
@@ -762,6 +756,16 @@ class TestReleaseLogIt:
             assert next(elements)
 
     def test__repr__extended(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
+
+        t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
+
+        assert repr(t_releaselogit) == 'ReleaseLogIt(0,"0.0.0")'
+        pass
+
+    def test__str__extended(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
         (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
