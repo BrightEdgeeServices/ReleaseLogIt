@@ -26,8 +26,6 @@ Version = '0.0.0'
 Title = 'Creation of the project'
 Description = ['List all the changes to the project here.',
                'Changes listed here will be in the release notes under the above heading.']
-FileChanges = [['filename01.py','Insert change description here.'],
-               ['filename02.txt','Insert change description here.']]
 """
 
 
@@ -199,16 +197,6 @@ class ReleaseLogIt:
             return False
         for desc in p_release_note["Description"]:
             if not isinstance(desc, str):
-                return False
-
-        if "FileChanges" not in p_release_note.keys():
-            return False
-        if not isinstance(p_release_note["FileChanges"], list):
-            return False
-        for i, item in enumerate(p_release_note["FileChanges"]):
-            if not isinstance(item[0], str):
-                return False
-            if not isinstance(item[1], str):
                 return False
 
         if "Title" not in p_release_note.keys():

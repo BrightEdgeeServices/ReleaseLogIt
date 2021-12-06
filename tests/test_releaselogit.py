@@ -20,10 +20,6 @@ _TOML_CONTENTS_DEF_STRUCT = {
                     "List all the changes to the project here.",
                     "Changes listed here will be in the release notes under the above heading.",
                 ],
-                "FileChanges": [
-                    ["filename01.py", "Insert change description here."],
-                    ["filename02.txt", "Insert change description here."],
-                ],
                 "Title": "Creation of the project",
                 "Version": "0.0.0",
             },
@@ -35,22 +31,16 @@ _TOML_CONTENTS_EXIST_CONTENTS = """\
 Title = "Creation of the project"
 Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
 Version = "0.0.0"
-FileChanges = [ [ "filename01.py", "Insert change description here.",], [ "filename02.txt", "Insert change description here.",],]
 
 [0.0.1]
 Title = "This is a new release."
 Description = [ "Changes for 0.0.1 are listed here.", "Add as many description lines as you like.",]
 Version = "0.0.1"
-FileChanges = [ [ "README.rst", "Update with latest changes.",], [ "releaselogit.py", "Update with latest changes.",],]
 """
 _TOML_CONTENTS_EXIST_STRUCT = {
     "0": {
         "0": {
             "0": {
-                "FileChanges": [
-                    ["filename01.py", "Insert change description here."],
-                    ["filename02.txt", "Insert change description here."],
-                ],
                 "Description": [
                     "List all the changes to the project here.",
                     "Changes listed here will be in the release notes under the above heading.",
@@ -59,10 +49,6 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                 "Version": "0.0.0",
             },
             "1": {
-                "FileChanges": [
-                    ["README.rst", "Update with latest changes."],
-                    ["releaselogit.py", "Update with latest changes."],
-                ],
                 "Description": [
                     "Changes for 0.0.1 are listed here.",
                     "Add as many description lines as you like.",
@@ -78,225 +64,167 @@ Title = 'Release 0.0.0.'
 Description = ['Description line 1 of release 0.0.0',
                'Description line 2 of release 0.0.0']
 Version =  '0.0.0'
-FileChanges = [['File001.py', 'File001 0.0.0'],
-               ['File002.txt', 'File002 0.0.0']]
 
 [0.0.1]
 Title = 'Release 0.0.1.'
 Description = ['Description line 1 of release 0.0.1',
                'Description line 2 of release 0.0.1']
 Version =  '0.0.1'
-FileChanges = [['File001.py', 'File001 0.0.1'],
-               ['File002.txt', 'File002 0.0.1']]
 
 [0.0.2]
 Title = 'Release 0.0.2.'
 Description = ['Description line 1 of release 0.0.2',
                'Description line 2 of release 0.0.2']
 Version =  '0.0.2'
-FileChanges = [['File001.py', 'File001 0.0.2'],
-               ['File002.txt', 'File002 0.0.2']]
 
 [0.1.0]
 Title = 'Release 0.1.0.'
 Description = ['Description line 1 of release 0.1.0',
                'Description line 2 of release 0.1.0']
 Version =  '0.1.0'
-FileChanges = [['File001.py', 'File001 0.1.0'],
-               ['File002.txt', 'File002 0.1.0']]
 
 [0.1.1]
 Title = 'Release 0.1.1.'
 Description = ['Description line 1 of release 0.1.1',
                'Description line 2 of release 0.1.1']
 Version =  '0.1.1'
-FileChanges = [['File001.py', 'File001 0.1.1'],
-               ['File002.txt', 'File002 0.1.1']]
 
 [0.1.2]
 Title = 'Release 0.1.2.'
 Description = ['Description line 1 of release 0.1.2',
                'Description line 2 of release 0.1.2']
 Version =  '0.1.2'
-FileChanges = [['File001.py', 'File001 0.1.2'],
-               ['File002.txt', 'File002 0.1.2']]
 
 [0.2.0]
 Title = 'Release 0.2.0.'
 Description = ['Description line 1 of release 0.2.0',
                'Description line 2 of release 0.2.0']
 Version =  '0.2.0'
-FileChanges = [['File001.py', 'File001 0.2.0'],
-               ['File002.txt', 'File002 0.2.0']]
 
 [0.2.1]
 Title = 'Release 0.2.1.'
 Description = ['Description line 1 of release 0.2.1',
                'Description line 2 of release 0.2.1']
 Version =  '0.2.1'
-FileChanges = [['File001.py', 'File001 0.2.1'],
-               ['File002.txt', 'File002 0.2.1']]
 
 [0.2.2]
 Title = 'Release 0.2.2.'
 Description = ['Description line 1 of release 0.2.2',
                'Description line 2 of release 0.2.2']
 Version =  '0.2.2'
-FileChanges = [['File001.py', 'File001 0.2.2'],
-               ['File002.txt', 'File002 0.2.2']]
 
 [1.0.0]
 Title = 'Release 1.0.0.'
 Description = ['Description line 1 of release 1.0.0',
                'Description line 2 of release 1.0.0']
 Version =  '1.0.0'
-FileChanges = [['File001.py', 'File001 1.0.0'],
-               ['File002.txt', 'File002 1.0.0']]
 
 [1.0.1]
 Title = 'Release 1.0.1.'
 Description = ['Description line 1 of release 1.0.1',
                'Description line 2 of release 1.0.1']
 Version =  '1.0.1'
-FileChanges = [['File001.py', 'File001 1.0.1'],
-               ['File002.txt', 'File002 1.0.1']]
 
 [1.0.2]
 Title = 'Release 1.0.2.'
 Description = ['Description line 1 of release 1.0.2',
                'Description line 2 of release 1.0.2']
 Version =  '1.0.2'
-FileChanges = [['File001.py', 'File001 1.0.2'],
-               ['File002.txt', 'File002 1.0.2']]
 
 [1.1.0]
 Title = 'Release 1.1.0.'
 Description = ['Description line 1 of release 1.1.0',
                'Description line 2 of release 1.1.0']
 Version =  '1.1.0'
-FileChanges = [['File001.py', 'File001 1.1.0'],
-               ['File002.txt', 'File002 1.1.0']]
 
 [1.1.1]
 Title = 'Release 1.1.1.'
 Description = ['Description line 1 of release 1.1.1',
                'Description line 2 of release 1.1.1']
 Version =  '1.1.1'
-FileChanges = [['File001.py', 'File001 1.1.1'],
-               ['File002.txt', 'File002 1.1.1']]
 
 [1.1.2]
 Title = 'Release 1.1.2.'
 Description = ['Description line 1 of release 1.1.2',
                'Description line 2 of release 1.1.2']
 Version =  '1.1.2'
-FileChanges = [['File001.py', 'File001 1.1.2'],
-               ['File002.txt', 'File002 1.1.2']]
 
 [1.2.0]
 Title = 'Release 1.2.0.'
 Description = ['Description line 1 of release 1.2.0',
                'Description line 2 of release 1.2.0']
 Version =  '1.2.0'
-FileChanges = [['File001.py', 'File001 1.2.0'],
-               ['File002.txt', 'File002 1.2.0']]
 
 [1.2.1]
 Title = 'Release 1.2.1.'
 Description = ['Description line 1 of release 1.2.1',
                'Description line 2 of release 1.2.1']
 Version =  '1.2.1'
-FileChanges = [['File001.py', 'File001 1.2.1'],
-               ['File002.txt', 'File002 1.2.1']]
 
 [1.2.2]
 Title = 'Release 1.2.2.'
 Description = ['Description line 1 of release 1.2.2',
                'Description line 2 of release 1.2.2']
 Version =  '1.2.2'
-FileChanges = [['File001.py', 'File001 1.2.2'],
-               ['File002.txt', 'File002 1.2.2']]
 
 [2.0.0]
 Title = 'Release 2.0.0.'
 Description = ['Description line 1 of release 2.0.0',
                'Description line 2 of release 2.0.0']
 Version =  '2.0.0'
-FileChanges = [['File001.py', 'File001 2.0.0'],
-               ['File002.txt', 'File002 2.0.0']]
 
 [2.0.1]
 Title = 'Release 2.0.1.'
 Description = ['Description line 1 of release 2.0.1',
                'Description line 2 of release 2.0.1']
 Version =  '2.0.1'
-FileChanges = [['File001.py', 'File001 2.0.1'],
-               ['File002.txt', 'File002 2.0.1']]
 
 [2.0.2]
 Title = 'Release 2.0.2.'
 Description = ['Description line 1 of release 2.0.2',
                'Description line 2 of release 2.0.2']
 Version =  '2.0.2'
-FileChanges = [['File001.py', 'File001 2.0.2'],
-               ['File002.txt', 'File002 2.0.2']]
 
 [2.1.0]
 Title = 'Release 2.1.0.'
 Description = ['Description line 1 of release 2.1.0',
                'Description line 2 of release 2.1.0']
 Version =  '2.1.0'
-FileChanges = [['File001.py', 'File001 2.1.0'],
-               ['File002.txt', 'File002 2.1.0']]
 
 [2.1.1]
 Title = 'Release 2.1.1.'
 Description = ['Description line 1 of release 2.1.1',
                'Description line 2 of release 2.1.1']
 Version =  '2.1.1'
-FileChanges = [['File001.py', 'File001 2.1.1'],
-               ['File002.txt', 'File002 2.1.1']]
 
 [2.1.2]
 Title = 'Release 2.1.2.'
 Description = ['Description line 1 of release 2.1.2',
                'Description line 2 of release 2.1.2']
 Version =  '2.1.2'
-FileChanges = [['File001.py', 'File001 2.1.2'],
-               ['File002.txt', 'File002 2.1.2']]
 
 [2.2.2]
 Title = 'Release 2.2.2.'
 Description = ['Description line 1 of release 2.2.2',
                'Description line 2 of release 2.2.2']
 Version =  '2.2.2'
-FileChanges = [['File001.py', 'File001 2.2.2'],
-               ['File002.txt', 'File002 2.2.2']]
 
 [2.2.1]
 Title = 'Release 2.2.1.'
 Description = ['Description line 1 of release 2.2.1',
                'Description line 2 of release 2.2.1']
 Version =  '2.2.1'
-FileChanges = [['File001.py', 'File001 2.2.1'],
-               ['File002.txt', 'File002 2.2.1']]
 
 [2.2.0]
 Title = 'Release 2.2.0.'
 Description = ['Description line 1 of release 2.2.0',
                'Description line 2 of release 2.2.0']
 Version =  '2.2.0'
-FileChanges = [['File001.py', 'File001 2.2.0'],
-               ['File002.txt', 'File002 2.2.0']]
 """
 _TOML_CONTENTS_EXTENDED_STRUCT = {
     "0": {
         "0": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.0.0"],
-                    ["File002.txt", "File002 0.0.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.0.0",
                     "Description line 2 of release 0.0.0",
@@ -305,10 +233,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.0.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.0.1"],
-                    ["File002.txt", "File002 0.0.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.0.1",
                     "Description line 2 of release 0.0.1",
@@ -317,10 +241,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.0.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.0.2"],
-                    ["File002.txt", "File002 0.0.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.0.2",
                     "Description line 2 of release 0.0.2",
@@ -331,10 +251,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "1": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.1.0"],
-                    ["File002.txt", "File002 0.1.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.1.0",
                     "Description line 2 of release 0.1.0",
@@ -343,10 +259,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.1.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.1.1"],
-                    ["File002.txt", "File002 0.1.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.1.1",
                     "Description line 2 of release 0.1.1",
@@ -355,10 +267,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.1.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.1.2"],
-                    ["File002.txt", "File002 0.1.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.1.2",
                     "Description line 2 of release 0.1.2",
@@ -369,10 +277,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "2": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.2.0"],
-                    ["File002.txt", "File002 0.2.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.2.0",
                     "Description line 2 of release 0.2.0",
@@ -381,10 +285,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.2.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.2.1"],
-                    ["File002.txt", "File002 0.2.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.2.1",
                     "Description line 2 of release 0.2.1",
@@ -393,10 +293,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "0.2.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 0.2.2"],
-                    ["File002.txt", "File002 0.2.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 0.2.2",
                     "Description line 2 of release 0.2.2",
@@ -409,10 +305,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
     "1": {
         "0": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.0.0"],
-                    ["File002.txt", "File002 1.0.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.0.0",
                     "Description line 2 of release 1.0.0",
@@ -421,10 +313,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.0.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.0.1"],
-                    ["File002.txt", "File002 1.0.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.0.1",
                     "Description line 2 of release 1.0.1",
@@ -433,10 +321,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.0.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.0.2"],
-                    ["File002.txt", "File002 1.0.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.0.2",
                     "Description line 2 of release 1.0.2",
@@ -447,10 +331,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "1": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.1.0"],
-                    ["File002.txt", "File002 1.1.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.1.0",
                     "Description line 2 of release 1.1.0",
@@ -459,10 +339,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.1.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.1.1"],
-                    ["File002.txt", "File002 1.1.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.1.1",
                     "Description line 2 of release 1.1.1",
@@ -471,10 +347,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.1.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.1.2"],
-                    ["File002.txt", "File002 1.1.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.1.2",
                     "Description line 2 of release 1.1.2",
@@ -485,10 +357,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "2": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.2.0"],
-                    ["File002.txt", "File002 1.2.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.2.0",
                     "Description line 2 of release 1.2.0",
@@ -497,10 +365,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.2.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.2.1"],
-                    ["File002.txt", "File002 1.2.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.2.1",
                     "Description line 2 of release 1.2.1",
@@ -509,10 +373,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "1.2.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 1.2.2"],
-                    ["File002.txt", "File002 1.2.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 1.2.2",
                     "Description line 2 of release 1.2.2",
@@ -525,10 +385,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
     "2": {
         "0": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.0.0"],
-                    ["File002.txt", "File002 2.0.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.0.0",
                     "Description line 2 of release 2.0.0",
@@ -537,10 +393,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.0.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.0.1"],
-                    ["File002.txt", "File002 2.0.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.0.1",
                     "Description line 2 of release 2.0.1",
@@ -549,10 +401,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.0.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.0.2"],
-                    ["File002.txt", "File002 2.0.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.0.2",
                     "Description line 2 of release 2.0.2",
@@ -563,10 +411,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "1": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.1.0"],
-                    ["File002.txt", "File002 2.1.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.1.0",
                     "Description line 2 of release 2.1.0",
@@ -575,10 +419,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.1.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.1.1"],
-                    ["File002.txt", "File002 2.1.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.1.1",
                     "Description line 2 of release 2.1.1",
@@ -587,10 +427,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.1.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.1.2"],
-                    ["File002.txt", "File002 2.1.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.1.2",
                     "Description line 2 of release 2.1.2",
@@ -601,10 +437,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
         "2": {
             "0": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.2.0"],
-                    ["File002.txt", "File002 2.2.0"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.2.0",
                     "Description line 2 of release 2.2.0",
@@ -613,10 +445,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.2.0",
             },
             "1": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.2.1"],
-                    ["File002.txt", "File002 2.2.1"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.2.1",
                     "Description line 2 of release 2.2.1",
@@ -625,10 +453,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Version": "2.2.1",
             },
             "2": {
-                "FileChanges": [
-                    ["File001.py", "File001 2.2.2"],
-                    ["File002.txt", "File002 2.2.2"],
-                ],
                 "Description": [
                     "Description line 1 of release 2.2.2",
                     "Description line 2 of release 2.2.2",
@@ -733,10 +557,6 @@ class TestReleaseLogIt:
                 "List all the changes to the project here.",
                 "Changes listed here will be in the release notes under the above heading.",
             ],
-            "FileChanges": [
-                ["filename01.py", "Insert change description here."],
-                ["filename02.txt", "Insert change description here."],
-            ],
             "Title": "Creation of the project",
             "Version": "0.0.0",
         }
@@ -744,10 +564,6 @@ class TestReleaseLogIt:
             "Description": [
                 "Changes for 0.0.1 are listed here.",
                 "Add as many description lines as you like.",
-            ],
-            "FileChanges": [
-                ["README.rst", "Update with latest changes."],
-                ["releaselogit.py", "Update with latest changes."],
             ],
             "Title": "This is a new release.",
             "Version": "0.0.1",
@@ -783,10 +599,6 @@ class TestReleaseLogIt:
                 "Description line 1.",
                 "Description line 2.",
             ],
-            "FileChanges": [
-                ["filename01.py", "Insert change description here."],
-                ["filename02.txt", "Insert change description here."],
-            ],
             "Title": "Release change 1.0.0",
             "Version": "1.0.0",
         }
@@ -795,10 +607,6 @@ class TestReleaseLogIt:
                 "Description line 1.",
                 "Description line 2.",
             ],
-            "FileChanges": [
-                ["filename01.py", "Insert change description here."],
-                ["filename02.txt", "Insert change description here."],
-            ],
             "Title": "Release change 0.1.0",
             "Version": "0.1.0",
         }
@@ -806,10 +614,6 @@ class TestReleaseLogIt:
             "Description": [
                 "Description line 1.",
                 "Description line 2.",
-            ],
-            "FileChanges": [
-                ["filename01.py", "Insert change description here."],
-                ["filename02.txt", "Insert change description here."],
             ],
             "Title": "Release change 0.0.1",
             "Version": "0.0.1",
@@ -828,10 +632,6 @@ class TestReleaseLogIt:
                             "List all the changes to the project here.",
                             "Changes listed here will be in the release notes under the above heading.",
                         ],
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
-                        ],
                         "Title": "Creation of the project",
                         "Version": "0.0.0",
                     },
@@ -839,10 +639,6 @@ class TestReleaseLogIt:
                         "Description": [
                             "Description line 1.",
                             "Description line 2.",
-                        ],
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
                         ],
                         "Title": "Release change 0.0.1",
                         "Version": "0.0.1",
@@ -853,10 +649,6 @@ class TestReleaseLogIt:
                         "Description": [
                             "Description line 1.",
                             "Description line 2.",
-                        ],
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
                         ],
                         "Title": "Release change 0.1.0",
                         "Version": "0.1.0",
@@ -869,10 +661,6 @@ class TestReleaseLogIt:
                         "Description": [
                             "Description line 1.",
                             "Description line 2.",
-                        ],
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
                         ],
                         "Title": "Release change 1.0.0",
                         "Version": "1.0.0",
@@ -898,10 +686,6 @@ class TestReleaseLogIt:
                 "Description line 1.",
                 "Description line 2.",
             ],
-            "FileChanges": [
-                ["filename01.py", "Insert change description here."],
-                ["filename02.txt", "Insert change description here."],
-            ],
             "Title": "Release change 9.9.9",
             "Version": "9.9.9",
         }
@@ -922,22 +706,6 @@ class TestReleaseLogIt:
 
         r_n = copy.deepcopy(release_note)
         r_n["Description"] = ["abc", 123]
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        del r_n["FileChanges"]
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["FileChanges"] = "abc"
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["FileChanges"] = [[123, "def"], ["ghi", "jkl"]]
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["FileChanges"] = [["abc", "def"], ["ghi", 456]]
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
@@ -988,10 +756,6 @@ class TestReleaseLogIt:
                 "Description line 2 of release 1.1.1",
             ],
             "Version": "1.1.1",
-            "FileChanges": [
-                ["File001.py", "File001 1.1.1"],
-                ["File002.txt", "File002 1.1.1"],
-            ],
         }
         assert t_releaselogit.get_release_note_by_title("Release 9.9.9.") is None
 
@@ -1009,10 +773,6 @@ class TestReleaseLogIt:
                 "Description line 2 of release 1.1.1",
             ],
             "Version": "1.1.1",
-            "FileChanges": [
-                ["File001.py", "File001 1.1.1"],
-                ["File002.txt", "File002 1.1.1"],
-            ],
         }
         assert t_releaselogit.get_release_note_by_title("9.9.9") is None
 
@@ -1055,10 +815,6 @@ class TestReleaseLogIt:
                 "Description line 2 of release 2.2.2",
             ],
             "Version": "2.2.2",
-            "FileChanges": [
-                ["File001.py", "File001 2.2.2"],
-                ["File002.txt", "File002 2.2.2"],
-            ],
         }
         pass
 
@@ -1076,10 +832,6 @@ class TestReleaseLogIt:
                 "Description line 2 of release 0.0.0",
             ],
             "Version": "0.0.0",
-            "FileChanges": [
-                ["File001.py", "File001 0.0.0"],
-                ["File002.txt", "File002 0.0.0"],
-            ],
         }
         pass
 
@@ -1090,10 +842,6 @@ class TestReleaseLogIt:
             "0": {
                 "0": {
                     "1": {
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
-                        ],
                         "Description": [
                             "Changes for 0.0.1 are listed here.",
                             "Add as many description lines as you like.",
@@ -1102,10 +850,6 @@ class TestReleaseLogIt:
                         "Version": "0.0.1",
                     },
                     "2": {
-                        "FileChanges": [
-                            ["README.rst", "Update with latest changes."],
-                            ["releaselogit.py", "Update with latest changes."],
-                        ],
                         "Description": [
                             "Changes for 0.0.2 are listed here.",
                             "Add as many description lines as you like.",
@@ -1118,10 +862,6 @@ class TestReleaseLogIt:
             "1": {
                 "1": {
                     "1": {
-                        "FileChanges": [
-                            ["filename01.py", "Insert change description here."],
-                            ["filename02.txt", "Insert change description here."],
-                        ],
                         "Description": [
                             "Changes for 1.1.1 are listed here.",
                             "Add as many description lines as you like.",
@@ -1130,10 +870,6 @@ class TestReleaseLogIt:
                         "Version": "1.1.1",
                     },
                     "3": {
-                        "FileChanges": [
-                            ["README.rst", "Update with latest changes."],
-                            ["releaselogit.py", "Update with latest changes."],
-                        ],
                         "Description": [
                             "Changes for 1.1.3 are listed here.",
                             "Add as many description lines as you like.",
