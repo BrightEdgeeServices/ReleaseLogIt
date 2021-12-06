@@ -22,7 +22,6 @@ _PROJ_VERSION = "0.0.3"
 
 _TOML_CONTENTS_DEF = """
 [0.0.0]
-Version = '0.0.0'
 Title = 'Creation of the project'
 Description = ['List all the changes to the project here.',
                'Changes listed here will be in the release notes under the above heading.']
@@ -67,7 +66,7 @@ class ReleaseLogIt:
         self.rel_list = []
         self.cur_pos = -1
         self.rel_cntr = 0
-        if self._validate_release_notes(rel_notes):
+        if self._validate_release_log(rel_notes):
             self.rel_notes = rel_notes
             self._get_release_list()
             self._sort()
@@ -97,24 +96,26 @@ class ReleaseLogIt:
 
     def add_release_note(self, p_release_note):
         if self._check_release_note(p_release_note):
-            release_parts = p_release_note["Version"].split(".")
-            if release_parts[0] in self.rel_notes.keys():
-                if release_parts[1] in self.rel_notes[release_parts[0]].keys():
-                    self.rel_notes[release_parts[0]][release_parts[1]][
-                        release_parts[2]
-                    ] = p_release_note
+            major = list(p_release_note.keys())[0]
+            minor = list(p_release_note[major].keys())[0]
+            patch = list(p_release_note[major][minor].keys())[0]
+            if major in self.rel_notes.keys():
+                if minor in self.rel_notes[major].keys():
+                    if patch not in self.rel_notes[major][minor].keys():
+                        self.rel_notes[major][minor][patch] = p_release_note[major][
+                            minor
+                        ][patch]
+                    else:
+                        return False
                 else:
-                    self.rel_notes[release_parts[0]][release_parts[1]] = {
-                        release_parts[2]: p_release_note
-                    }
+                    self.rel_notes[major][minor] = p_release_note[major][minor]
             else:
-                self.rel_notes[release_parts[0]] = {
-                    release_parts[1]: {release_parts[2]: p_release_note}
-                }
-            self.rel_list.append(release_parts)
+                self.rel_notes[major] = p_release_note[major]
+
+            self.rel_list.append([major, minor, patch])
             self._sort()
             self.rel_cntr = len(self.rel_list)
-        pass
+        return True
 
     def _create_def_config(self):
         """Create the "release.toml" configuration file.
@@ -149,9 +150,9 @@ class ReleaseLogIt:
         return None
 
     def get_release_note_by_version(self, p_version):
-        for rel in self.rel_list:
-            if self.rel_notes[rel[0]][rel[1]][rel[2]]["Version"] == p_version:
-                return self.rel_notes[rel[0]][rel[1]][rel[2]]
+        parts = p_version.split(".")
+        if parts in self.rel_list:
+            return self.rel_notes[parts[0]][parts[1]][parts[2]]
         return None
 
     def get_release_titles(self):
@@ -189,54 +190,46 @@ class ReleaseLogIt:
         return self.rel_list
 
     def _check_release_note(self, p_release_note):
-        if "Description" not in p_release_note.keys():
-            return False
-        if not isinstance(p_release_note["Description"], list):
-            return False
-        if len(p_release_note["Description"]) <= 0:
-            return False
-        for desc in p_release_note["Description"]:
-            if not isinstance(desc, str):
-                return False
+        major = p_release_note.keys()
+        if len(major) == 1:
+            major = list(major)[0]
+            if isinstance(major, str) and major.isnumeric():
+                minor = p_release_note[major].keys()
+                if len(minor) == 1:
+                    minor = list(minor)[0]
+                    if isinstance(minor, str) and minor.isnumeric():
+                        patch = p_release_note[major][minor].keys()
+                        if len(patch) == 1:
+                            patch = list(patch)[0]
+                            if isinstance(patch, str) and patch.isnumeric():
+                                release_note_contents = p_release_note[major][minor][
+                                    patch
+                                ]
+                                if "Description" not in release_note_contents.keys():
+                                    return False
+                                if not isinstance(
+                                    release_note_contents["Description"], list
+                                ):
+                                    return False
+                                if len(release_note_contents["Description"]) <= 0:
+                                    return False
+                                for desc in release_note_contents["Description"]:
+                                    if not isinstance(desc, str):
+                                        return False
+                                if "Title" not in release_note_contents.keys():
+                                    return False
+                                if self.has_title(release_note_contents["Title"]):
+                                    return False
+                                return True
+        return False
 
-        if "Title" not in p_release_note.keys():
-            return False
-        if self.has_title(p_release_note["Title"]):
-            return False
-
-        if "Version" not in p_release_note.keys():
-            return False
-        release_parts = p_release_note["Version"].split(".")
-        if not release_parts[0].isnumeric():
-            return False
-        if not release_parts[1].isnumeric():
-            return False
-        if not release_parts[2].isnumeric():
-            return False
-        if release_parts in self.rel_list:
-            return False
-
-        return True
-
-    def _validate_release_notes(self, p_release_notes):
+    def _validate_release_log(self, p_release_notes):
         for major in p_release_notes:
-            if not isinstance(major, str):
-                return False
-            if not major.isnumeric():
-                return False
             for minor in p_release_notes[major]:
-                if not isinstance(minor, str):
-                    return False
-                if not minor.isnumeric():
-                    return False
                 for patch in p_release_notes[major][minor]:
-                    if not isinstance(patch, str):
-                        return False
-                    if not patch.isnumeric():
-                        return False
-                    release = p_release_notes[major][minor][patch]
-                    if not "{}.{}.{}".format(major, minor, patch) == release["Version"]:
-                        return False
+                    release = {
+                        major: {minor: {patch: p_release_notes[major][minor][patch]}}
+                    }
                     if not self._check_release_note(release):
                         return False
         return True

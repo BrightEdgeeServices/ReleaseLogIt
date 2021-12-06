@@ -21,7 +21,6 @@ _TOML_CONTENTS_DEF_STRUCT = {
                     "Changes listed here will be in the release notes under the above heading.",
                 ],
                 "Title": "Creation of the project",
-                "Version": "0.0.0",
             },
         }
     }
@@ -30,12 +29,10 @@ _TOML_CONTENTS_EXIST_CONTENTS = """\
 [0.0.0]
 Title = "Creation of the project"
 Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
-Version = "0.0.0"
 
 [0.0.1]
 Title = "This is a new release."
 Description = [ "Changes for 0.0.1 are listed here.", "Add as many description lines as you like.",]
-Version = "0.0.1"
 """
 _TOML_CONTENTS_EXIST_STRUCT = {
     "0": {
@@ -46,7 +43,6 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                     "Changes listed here will be in the release notes under the above heading.",
                 ],
                 "Title": "Creation of the project",
-                "Version": "0.0.0",
             },
             "1": {
                 "Description": [
@@ -54,7 +50,6 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                     "Add as many description lines as you like.",
                 ],
                 "Title": "This is a new release.",
-                "Version": "0.0.1",
             },
         }
     }
@@ -63,163 +58,136 @@ _TOML_CONTENTS_EXTENDED_CONTENTS = """[0.0.0]
 Title = 'Release 0.0.0.'
 Description = ['Description line 1 of release 0.0.0',
                'Description line 2 of release 0.0.0']
-Version =  '0.0.0'
 
 [0.0.1]
 Title = 'Release 0.0.1.'
 Description = ['Description line 1 of release 0.0.1',
                'Description line 2 of release 0.0.1']
-Version =  '0.0.1'
 
 [0.0.2]
 Title = 'Release 0.0.2.'
 Description = ['Description line 1 of release 0.0.2',
                'Description line 2 of release 0.0.2']
-Version =  '0.0.2'
 
 [0.1.0]
 Title = 'Release 0.1.0.'
 Description = ['Description line 1 of release 0.1.0',
                'Description line 2 of release 0.1.0']
-Version =  '0.1.0'
 
 [0.1.1]
 Title = 'Release 0.1.1.'
 Description = ['Description line 1 of release 0.1.1',
                'Description line 2 of release 0.1.1']
-Version =  '0.1.1'
 
 [0.1.2]
 Title = 'Release 0.1.2.'
 Description = ['Description line 1 of release 0.1.2',
                'Description line 2 of release 0.1.2']
-Version =  '0.1.2'
 
 [0.2.0]
 Title = 'Release 0.2.0.'
 Description = ['Description line 1 of release 0.2.0',
                'Description line 2 of release 0.2.0']
-Version =  '0.2.0'
 
 [0.2.1]
 Title = 'Release 0.2.1.'
 Description = ['Description line 1 of release 0.2.1',
                'Description line 2 of release 0.2.1']
-Version =  '0.2.1'
 
 [0.2.2]
 Title = 'Release 0.2.2.'
 Description = ['Description line 1 of release 0.2.2',
                'Description line 2 of release 0.2.2']
-Version =  '0.2.2'
 
 [1.0.0]
 Title = 'Release 1.0.0.'
 Description = ['Description line 1 of release 1.0.0',
                'Description line 2 of release 1.0.0']
-Version =  '1.0.0'
 
 [1.0.1]
 Title = 'Release 1.0.1.'
 Description = ['Description line 1 of release 1.0.1',
                'Description line 2 of release 1.0.1']
-Version =  '1.0.1'
 
 [1.0.2]
 Title = 'Release 1.0.2.'
 Description = ['Description line 1 of release 1.0.2',
                'Description line 2 of release 1.0.2']
-Version =  '1.0.2'
 
 [1.1.0]
 Title = 'Release 1.1.0.'
 Description = ['Description line 1 of release 1.1.0',
                'Description line 2 of release 1.1.0']
-Version =  '1.1.0'
 
 [1.1.1]
 Title = 'Release 1.1.1.'
 Description = ['Description line 1 of release 1.1.1',
                'Description line 2 of release 1.1.1']
-Version =  '1.1.1'
 
 [1.1.2]
 Title = 'Release 1.1.2.'
 Description = ['Description line 1 of release 1.1.2',
                'Description line 2 of release 1.1.2']
-Version =  '1.1.2'
 
 [1.2.0]
 Title = 'Release 1.2.0.'
 Description = ['Description line 1 of release 1.2.0',
                'Description line 2 of release 1.2.0']
-Version =  '1.2.0'
 
 [1.2.1]
 Title = 'Release 1.2.1.'
 Description = ['Description line 1 of release 1.2.1',
                'Description line 2 of release 1.2.1']
-Version =  '1.2.1'
 
 [1.2.2]
 Title = 'Release 1.2.2.'
 Description = ['Description line 1 of release 1.2.2',
                'Description line 2 of release 1.2.2']
-Version =  '1.2.2'
 
 [2.0.0]
 Title = 'Release 2.0.0.'
 Description = ['Description line 1 of release 2.0.0',
                'Description line 2 of release 2.0.0']
-Version =  '2.0.0'
 
 [2.0.1]
 Title = 'Release 2.0.1.'
 Description = ['Description line 1 of release 2.0.1',
                'Description line 2 of release 2.0.1']
-Version =  '2.0.1'
 
 [2.0.2]
 Title = 'Release 2.0.2.'
 Description = ['Description line 1 of release 2.0.2',
                'Description line 2 of release 2.0.2']
-Version =  '2.0.2'
 
 [2.1.0]
 Title = 'Release 2.1.0.'
 Description = ['Description line 1 of release 2.1.0',
                'Description line 2 of release 2.1.0']
-Version =  '2.1.0'
 
 [2.1.1]
 Title = 'Release 2.1.1.'
 Description = ['Description line 1 of release 2.1.1',
                'Description line 2 of release 2.1.1']
-Version =  '2.1.1'
 
 [2.1.2]
 Title = 'Release 2.1.2.'
 Description = ['Description line 1 of release 2.1.2',
                'Description line 2 of release 2.1.2']
-Version =  '2.1.2'
 
 [2.2.2]
 Title = 'Release 2.2.2.'
 Description = ['Description line 1 of release 2.2.2',
                'Description line 2 of release 2.2.2']
-Version =  '2.2.2'
 
 [2.2.1]
 Title = 'Release 2.2.1.'
 Description = ['Description line 1 of release 2.2.1',
                'Description line 2 of release 2.2.1']
-Version =  '2.2.1'
 
 [2.2.0]
 Title = 'Release 2.2.0.'
 Description = ['Description line 1 of release 2.2.0',
                'Description line 2 of release 2.2.0']
-Version =  '2.2.0'
 """
 _TOML_CONTENTS_EXTENDED_STRUCT = {
     "0": {
@@ -230,7 +198,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.0",
                 ],
                 "Title": "Release 0.0.0.",
-                "Version": "0.0.0",
             },
             "1": {
                 "Description": [
@@ -238,7 +205,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.1",
                 ],
                 "Title": "Release 0.0.1.",
-                "Version": "0.0.1",
             },
             "2": {
                 "Description": [
@@ -246,7 +212,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.2",
                 ],
                 "Title": "Release 0.0.2.",
-                "Version": "0.0.2",
             },
         },
         "1": {
@@ -256,7 +221,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.0",
                 ],
                 "Title": "Release 0.1.0.",
-                "Version": "0.1.0",
             },
             "1": {
                 "Description": [
@@ -264,7 +228,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.1",
                 ],
                 "Title": "Release 0.1.1.",
-                "Version": "0.1.1",
             },
             "2": {
                 "Description": [
@@ -272,7 +235,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.2",
                 ],
                 "Title": "Release 0.1.2.",
-                "Version": "0.1.2",
             },
         },
         "2": {
@@ -282,7 +244,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.0",
                 ],
                 "Title": "Release 0.2.0.",
-                "Version": "0.2.0",
             },
             "1": {
                 "Description": [
@@ -290,7 +251,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.1",
                 ],
                 "Title": "Release 0.2.1.",
-                "Version": "0.2.1",
             },
             "2": {
                 "Description": [
@@ -298,7 +258,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.2",
                 ],
                 "Title": "Release 0.2.2.",
-                "Version": "0.2.2",
             },
         },
     },
@@ -310,7 +269,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.0",
                 ],
                 "Title": "Release 1.0.0.",
-                "Version": "1.0.0",
             },
             "1": {
                 "Description": [
@@ -318,7 +276,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.1",
                 ],
                 "Title": "Release 1.0.1.",
-                "Version": "1.0.1",
             },
             "2": {
                 "Description": [
@@ -326,7 +283,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.2",
                 ],
                 "Title": "Release 1.0.2.",
-                "Version": "1.0.2",
             },
         },
         "1": {
@@ -336,7 +292,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.0",
                 ],
                 "Title": "Release 1.1.0.",
-                "Version": "1.1.0",
             },
             "1": {
                 "Description": [
@@ -344,7 +299,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.1",
                 ],
                 "Title": "Release 1.1.1.",
-                "Version": "1.1.1",
             },
             "2": {
                 "Description": [
@@ -352,7 +306,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.2",
                 ],
                 "Title": "Release 1.1.2.",
-                "Version": "1.1.2",
             },
         },
         "2": {
@@ -362,7 +315,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.0",
                 ],
                 "Title": "Release 1.2.0.",
-                "Version": "1.2.0",
             },
             "1": {
                 "Description": [
@@ -370,7 +322,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.1",
                 ],
                 "Title": "Release 1.2.1.",
-                "Version": "1.2.1",
             },
             "2": {
                 "Description": [
@@ -378,7 +329,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.2",
                 ],
                 "Title": "Release 1.2.2.",
-                "Version": "1.2.2",
             },
         },
     },
@@ -390,7 +340,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.0",
                 ],
                 "Title": "Release 2.0.0.",
-                "Version": "2.0.0",
             },
             "1": {
                 "Description": [
@@ -398,7 +347,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.1",
                 ],
                 "Title": "Release 2.0.1.",
-                "Version": "2.0.1",
             },
             "2": {
                 "Description": [
@@ -406,7 +354,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.2",
                 ],
                 "Title": "Release 2.0.2.",
-                "Version": "2.0.2",
             },
         },
         "1": {
@@ -416,7 +363,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.0",
                 ],
                 "Title": "Release 2.1.0.",
-                "Version": "2.1.0",
             },
             "1": {
                 "Description": [
@@ -424,7 +370,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.1",
                 ],
                 "Title": "Release 2.1.1.",
-                "Version": "2.1.1",
             },
             "2": {
                 "Description": [
@@ -432,7 +377,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.2",
                 ],
                 "Title": "Release 2.1.2.",
-                "Version": "2.1.2",
             },
         },
         "2": {
@@ -442,7 +386,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.0",
                 ],
                 "Title": "Release 2.2.0.",
-                "Version": "2.2.0",
             },
             "1": {
                 "Description": [
@@ -450,7 +393,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.1",
                 ],
                 "Title": "Release 2.2.1.",
-                "Version": "2.2.1",
             },
             "2": {
                 "Description": [
@@ -458,7 +400,6 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.2",
                 ],
                 "Title": "Release 2.2.2.",
-                "Version": "2.2.2",
             },
         },
     },
@@ -558,7 +499,6 @@ class TestReleaseLogIt:
                 "Changes listed here will be in the release notes under the above heading.",
             ],
             "Title": "Creation of the project",
-            "Version": "0.0.0",
         }
         assert next(elements) == {
             "Description": [
@@ -566,7 +506,6 @@ class TestReleaseLogIt:
                 "Add as many description lines as you like.",
             ],
             "Title": "This is a new release.",
-            "Version": "0.0.1",
         }
         with pytest.raises(StopIteration):
             assert next(elements)
@@ -595,34 +534,64 @@ class TestReleaseLogIt:
         """Assert class __init__"""
         working_dir = setup_env
         release_note_100 = {
-            "Description": [
-                "Description line 1.",
-                "Description line 2.",
-            ],
-            "Title": "Release change 1.0.0",
-            "Version": "1.0.0",
+            "1": {
+                "0": {
+                    "0": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "Title": "Release change 1.0.0",
+                    }
+                }
+            }
         }
+
         release_note_010 = {
-            "Description": [
-                "Description line 1.",
-                "Description line 2.",
-            ],
-            "Title": "Release change 0.1.0",
-            "Version": "0.1.0",
+            "0": {
+                "1": {
+                    "0": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "Title": "Release change 0.1.0",
+                    }
+                }
+            }
         }
         release_note_001 = {
-            "Description": [
-                "Description line 1.",
-                "Description line 2.",
-            ],
-            "Title": "Release change 0.0.1",
-            "Version": "0.0.1",
+            "0": {
+                "0": {
+                    "1": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "Title": "Release change 0.0.1",
+                    }
+                }
+            }
+        }
+        release_note_000 = {
+            "0": {
+                "0": {
+                    "0": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "Title": "Release change 0.0.0",
+                    }
+                }
+            }
         }
 
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
-        t_releaselogit.add_release_note(release_note_100)
-        t_releaselogit.add_release_note(release_note_010)
-        t_releaselogit.add_release_note(release_note_001)
+        assert t_releaselogit.add_release_note(release_note_100)
+        assert t_releaselogit.add_release_note(release_note_010)
+        assert t_releaselogit.add_release_note(release_note_001)
+        assert not t_releaselogit.add_release_note(release_note_000)
 
         assert t_releaselogit.rel_notes == {
             "0": {
@@ -633,7 +602,6 @@ class TestReleaseLogIt:
                             "Changes listed here will be in the release notes under the above heading.",
                         ],
                         "Title": "Creation of the project",
-                        "Version": "0.0.0",
                     },
                     "1": {
                         "Description": [
@@ -641,7 +609,6 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.0.1",
-                        "Version": "0.0.1",
                     },
                 },
                 "1": {
@@ -651,7 +618,6 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.1.0",
-                        "Version": "0.1.0",
                     },
                 },
             },
@@ -663,7 +629,6 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 1.0.0",
-                        "Version": "1.0.0",
                     }
                 }
             },
@@ -682,58 +647,43 @@ class TestReleaseLogIt:
         working_dir = setup_env
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
         release_note = {
-            "Description": [
-                "Description line 1.",
-                "Description line 2.",
-            ],
-            "Title": "Release change 9.9.9",
-            "Version": "9.9.9",
+            "9": {
+                "9": {
+                    "9": {
+                        "Description": [
+                            "Description line 1.",
+                            "Description line 2.",
+                        ],
+                        "Title": "Release 9.9.9",
+                    }
+                }
+            }
         }
 
         assert t_releaselogit._check_release_note(release_note)
 
         r_n = copy.deepcopy(release_note)
-        del r_n["Description"]
+        del r_n["9"]["9"]["9"]["Description"]
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        r_n["Description"] = "abc"
+        r_n["9"]["9"]["9"]["Description"] = "abc"
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        r_n["Description"] = []
+        r_n["9"]["9"]["9"]["Description"] = []
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        r_n["Description"] = ["abc", 123]
+        r_n["9"]["9"]["9"]["Description"] = ["abc", 123]
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        del r_n["Title"]
+        del r_n["9"]["9"]["9"]["Title"]
         assert not t_releaselogit._check_release_note(r_n)
 
         r_n = copy.deepcopy(release_note)
-        r_n["Title"] = "Creation of the project"
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        del r_n["Version"]
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["Version"] = "a.9.9"
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["Version"] = "9.q.9"
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["Version"] = "9.9.q"
-        assert not t_releaselogit._check_release_note(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["Version"] = "0.0.0"
+        r_n["9"]["9"]["9"]["Title"] = "Creation of the project"
         assert not t_releaselogit._check_release_note(r_n)
 
         pass
@@ -755,7 +705,6 @@ class TestReleaseLogIt:
                 "Description line 1 of release 1.1.1",
                 "Description line 2 of release 1.1.1",
             ],
-            "Version": "1.1.1",
         }
         assert t_releaselogit.get_release_note_by_title("Release 9.9.9.") is None
 
@@ -772,9 +721,9 @@ class TestReleaseLogIt:
                 "Description line 1 of release 1.1.1",
                 "Description line 2 of release 1.1.1",
             ],
-            "Version": "1.1.1",
         }
-        assert t_releaselogit.get_release_note_by_title("9.9.9") is None
+        assert t_releaselogit.get_release_note_by_version("9.9.9") is None
+        pass
 
     def test_get_release_titles(self, setup_env):
         """Assert class __init__"""
@@ -814,7 +763,6 @@ class TestReleaseLogIt:
                 "Description line 1 of release 2.2.2",
                 "Description line 2 of release 2.2.2",
             ],
-            "Version": "2.2.2",
         }
         pass
 
@@ -831,7 +779,6 @@ class TestReleaseLogIt:
                 "Description line 1 of release 0.0.0",
                 "Description line 2 of release 0.0.0",
             ],
-            "Version": "0.0.0",
         }
         pass
 
@@ -847,7 +794,6 @@ class TestReleaseLogIt:
                             "Add as many description lines as you like.",
                         ],
                         "Title": "Release 0.0.1",
-                        "Version": "0.0.1",
                     },
                     "2": {
                         "Description": [
@@ -855,7 +801,6 @@ class TestReleaseLogIt:
                             "Add as many description lines as you like.",
                         ],
                         "Title": "Release 0.0.2",
-                        "Version": "0.0.2",
                     },
                 }
             },
@@ -867,7 +812,6 @@ class TestReleaseLogIt:
                             "Add as many description lines as you like.",
                         ],
                         "Title": "Release 1.1.1",
-                        "Version": "1.1.1",
                     },
                     "3": {
                         "Description": [
@@ -875,52 +819,46 @@ class TestReleaseLogIt:
                             "Add as many description lines as you like.",
                         ],
                         "Title": "Release 1.1.3",
-                        "Version": "1.1.3",
                     },
                 }
             },
         }
 
-        assert t_releaselogit._validate_release_notes(release_note)
+        assert t_releaselogit._validate_release_log(release_note)
 
         r_n = copy.deepcopy(release_note)
         r_n["a"] = r_n["0"]
         del r_n["0"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         r_n[0] = r_n["0"].copy()
         del r_n["0"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         r_n["1"]["a"] = r_n["1"]["1"]
         del r_n["1"]["1"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         r_n["1"][1] = r_n["1"]["1"]
         del r_n["1"]["1"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         r_n["1"]["1"]["a"] = r_n["1"]["1"]["1"]
         del r_n["1"]["1"]["1"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         r_n["1"]["1"][1] = r_n["1"]["1"]["1"]
         del r_n["1"]["1"]["1"]
-        assert not t_releaselogit._validate_release_notes(r_n)
-
-        r_n = copy.deepcopy(release_note)
-        r_n["0"]["0"]["0"] = r_n["0"]["0"]["1"]
-        del r_n["0"]["0"]["1"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         r_n = copy.deepcopy(release_note)
         del r_n["0"]["0"]["1"]["Description"]
-        assert not t_releaselogit._validate_release_notes(r_n)
+        assert not t_releaselogit._validate_release_log(r_n)
 
         pass
 
