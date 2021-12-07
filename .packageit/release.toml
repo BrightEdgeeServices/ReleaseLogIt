@@ -1,3 +1,9 @@
+[0.14.0]
+Version = '0.14.0'
+Title = 'Ver 0.14.0'
+Description = ['Radd_release_note returns incorrect value.',
+               '-If add_release_note is unsuccessful, add_release_note still returns True.']
+
 [0.13.0]
 Version = '0.13.0'
 Title = 'Ver 0.13.0'

@@ -586,12 +586,20 @@ class TestReleaseLogIt:
                 }
             }
         }
+        release_note_default = {
+            "Description": [
+                "Description line 1.",
+                "Description line 2.",
+            ],
+            "Title": "Release change 0.0.0",
+        }
 
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
         assert t_releaselogit.add_release_note(release_note_100)
         assert t_releaselogit.add_release_note(release_note_010)
         assert t_releaselogit.add_release_note(release_note_001)
         assert not t_releaselogit.add_release_note(release_note_000)
+        assert not t_releaselogit.add_release_note(release_note_default)
 
         assert t_releaselogit.rel_notes == {
             "0": {

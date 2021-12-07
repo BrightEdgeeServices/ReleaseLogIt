@@ -115,7 +115,8 @@ class ReleaseLogIt:
             self.rel_list.append([major, minor, patch])
             self._sort()
             self.rel_cntr = len(self.rel_list)
-        return True
+            return True
+        return False
 
     def _create_def_config(self):
         """Create the "release.toml" configuration file.
