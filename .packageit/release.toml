@@ -1,21 +1,21 @@
 [0.13.0]
 Version = '0.13.0'
 Title = 'Ver 0.13.0'
-Description = ['Update .packageit/release.toml with he latest releases notes.']
-FileChanges = []
+Description = ['Remove "FileChanges" from release.toml.',
+               '- It was a good idea at the time but not necessary because the changes to files should (are) rather be tracked in git self',
+               'Discontinue Version option in release.toml',
+               '- Version option in release.toml is unnecessary and creates a point of failure due to duplication in the toml file. The section already contains the version and it is inherent in the dict structure .']
 
 [0.12.0]
 Version = '0.12.0'
 Title = 'Ver 0.12.0'
 Description = ['Update .packageit/release.toml with he latest releases notes.']
-FileChanges = []
 
 [0.11.0]
 Version = '0.11.0'
 Title = 'Ver 0.11.0'
 Description = ['Improve __repr__ to display',
                '- repr must return self.cur_pos and rel_list[self.cur_pos]']
-FileChanges = []
 
 [0.10.0]
 Version = '0.10.0'
@@ -25,20 +25,17 @@ Description = ['Rename class, add new methods and discontinue setup.py',
                '- Add latest method. Return the latest (last) release notes',
                '- Add repr dunder. Return the current release of curr_rel pointer',
                '- Rename the class to ReleaseLogIt because it is a collection (log) of release notes.']
-FileChanges = []
 
 [0.9.0]
 Version = '0.9.0'
 Title = 'Ver 0.9.0'
 Description = ['Add "write_toml"',
                '- Export the contents to a toml file.']
-FileChanges = []
 
 [0.8.0]
 Version = '0.8.0'
 Title = 'Ver 0.8.0'
 Description = ['Rename get_release_note to get_release_note_by_title to enable the creation of get_release_note_by_version method']
-FileChanges = []
 
 [0.7.0]
 Version = '0.7.0'
@@ -48,33 +45,28 @@ Description = ['Add "get_tags" method to return a list of tags for the current r
                '- Rename self.seq -> self.rel_list',
                '- Rename self.release_notes -> rel_notes',
                '- Rename self.element_cntr -> rel_cntr']
-FileChanges = []
 
 [0.6.0]
 Version = '0.6.0'
 Title = 'Ver 0.6.0'
 Description = ['Add "get_release_titles" method',
                '- Return a list off all the titles in the release notes.']
-FileChanges = []
 
 [0.5.0]
 Version = '0.5.0'
 Title = 'Ver 0.5.0'
 Description = ['Add a release note to the current release notes.']
-FileChanges = []
 
 [0.4.0]
 Version = '0.4.0'
 Title = 'Ver 0.4.0'
 Description = ['Validate release notes is in the correct format.']
-FileChanges = []
 
 [0.3.0]
 Version = '0.3.0'
 Title = 'Ver 0.3.0'
 Description = ['Add "get_release_notes"',
                '-Get the release notes for the release searching by title.']
-FileChanges = []
 
 [0.2.0]
 Version = '0.2.0'
@@ -82,13 +74,11 @@ Title = 'Ver 0.2.0'
 Description = ['PyGitHub uses "title" in their naming conventions for releases. To conform with this naming convention:',
                '- Change the "has_header" method name to "has_title"',
                '- Chenge the "Header" key in the toml structure to "Title"']
-FileChanges = []
 
 [0.1.0]
 Version = '0.1.0'
 Title = 'Ver 0.1.0'
 Description = ['Check if a "Header" exist. Fi it does, return the detail of the release entry.']
-FileChanges = []
 
 [0.0.7]
 Version = '0.0.7'
@@ -98,17 +88,13 @@ Description = ['Change release.toml structure to contains file and description c
                '- Move the "changesXX" keys to a list',
                '- Remove the "Release.X.X.X.Detail" key',
                '- Remove the "Release.X.X.X.Changes" key']
-FileChanges = []
 
 [0.0.6]
 Version = '0.0.6'
 Title = 'Ver 0.0.6'
 Description = ['Add "version" descriptor to "Detail" section of release.toml.',
                '- General automated updates by PackageIt']
-FileChanges = [['.packageit/release.toml', '.'],
-               ['setup.py', 'Update version.'],
-               ['src/releaseit/releaseit.py', '.'],
-               ['tests/test_releaseit.py', '.']]
+
 [0.0.5]
 Version = '0.0.5'
 Title = 'Ver 0.0.5'
@@ -116,19 +102,11 @@ Description = ['Enhance toml structure to include a header and description',
                '- Manually update .packageit/release.toml with changes.',
                '- Update method parameters to in house standards.',
                '- Enhance .packageit/release.toml with more information about the release including "Detail" and "Changes" sections.',]
-FileChanges = [['.packageit/packageit.ini', '.'],
-               ['.packageit/release.toml', '.'],
-               ['src/releaseit/releaseit.py', '.'],
-               ['tests/test_releaseit.py', '.']]
 
 [0.0.4]
 Version = '0.0.4'
 Title = 'Ver 0.0.4'
 Description = ['The current structure only accommodate the semantic versioning with a simple description of the new release. The intention is to change the structure so that it also include a description for the changes to the individual files. These descriptions can then be used as the commit message during the commit process in an effort to automate the git commit process.']
-FileChanges = [['.packageit/release.toml', 'Introduction of the structured release configuration file.'],
-               ['setup.py', 'Update version.'],
-               ['releaseit.py', 'Introduction of release.toml file.'],
-               ['tests/test_releaseit.py', 'Adapt the tests']]
 
 [0.0.3]
 Version = '0.0.3'
@@ -137,54 +115,13 @@ Description = ['Change the pytest strategy from individual test files to include
                'Add requirements to requirements* files.',
                'Change default descriptions and code in source files',
                'General automated updates by PackageIt']
-FileChanges = [['README.rst', 'Automated recreate by PackageIt.'],
-               ['requirements.txt', 'Add toml.'],
-               ['setup.cfg', 'Change config to include doctrings.'],
-               ['setup.py', 'Update version.'],
-               ['releaseit.py', 'Update from default to specific.'],
-               ['requirements_test.txt', 'Add pytest.'],
-               ['tests/conftest.py', 'Change enforced by updated template.'],
-               ['tests/test_releaseit.py', 'Change pytest strategy.'],
-               ['tests/test_releaseit__ini__.py', 'Deleted du to pytest strategy.']]
 
 [0.0.2]
 Version = '0.0.2'
 Title = 'Ver 0.0.2'
 Description = ['Experiment with tags and versions']
-FileChanges = [['setup.py', 'Increase the version.']]
 
 [0.0.1]
 Version = '0.0.1'
 Title = 'Ver 0.0.1'
 Description = ['Create the project from templates and the defaults.']
-FileChanges = [['.github/ISSUE_TEMPLATE/bug.md', 'Auto generated by PackageIt.'],
-               ['github/ISSUE_TEMPLATE/config.yaml', 'Auto generated by PackageIt.'],
-               ['.github/ISSUE_TEMPLATE/feature.md', 'Auto generated by PackageIt.'],
-               ['.github/workflows/ci.yaml', 'Auto generated by PackageIt.'],
-               ['.github/workflows/pre-commit.yaml', 'Auto generated by PackageIt.'],
-               ['.github/workflows/release.yml', 'Auto generated by PackageIt.'],
-               ['.gitignore', 'Auto generated by PackageIt.'],
-               ['.pre-commit-config.yaml', 'Auto generated by PackageIt.'],
-               ['.readthedocs.yaml', 'Auto generated by PackageIt.'],
-               ['LICENSE', 'Auto generated by PackageIt.'],
-               ['MANIFEST.in', 'Auto generated by PackageIt.'],
-               ['README.rst', 'Auto generated by PackageIt.'],
-               ['ToBeDeleted.txt', 'Auto generated by PackageIt.'],
-               ['docs/Makefile', 'Auto generated by PackageIt.'],
-               ['docs/make.bat', 'Auto generated by PackageIt.'],
-               ['docs/requirements_docs.txt', 'Auto generated by PackageIt.'],
-               ['docs/source/Installation.rst', 'Auto generated by PackageIt.'],
-               ['docs/source/api.rst', 'Auto generated by PackageIt.'],
-               ['docs/source/conf.py', 'Auto generated by PackageIt.'],
-               ['docs/source/conventions.rst', 'Auto generated by PackageIt.'],
-               ['docs/source/examples.rst', 'Auto generated by PackageIt.'],
-               ['docs/source/faq.rst', 'Auto generated by PackageIt.'],
-               ['docs/source/index.rst', 'Auto generated by PackageIt.'],
-               ['pyproject.toml', 'Auto generated by PackageIt.'],
-               ['requirements_test.txt', 'Auto generated by PackageIt.'],
-               ['setup.cfg', 'Auto generated by PackageIt.'],
-               ['setup.py', 'Auto generated by PackageIt.'],
-               ['src/releaseit/__init__.py', 'Auto generated by PackageIt.'],
-               ['src/releaseit/releaseit.py', 'Auto generated by PackageIt.'],
-               ['tests/conftest.py', 'Auto generated by PackageIt.'],
-               ['tests/test_releaseit__ini__.py', 'Auto generated by PackageIt.']]
