@@ -80,9 +80,8 @@ class ReleaseLogIt:
 
     def __next__(self):
         if self.cur_pos < self.rel_cntr:
-            element = self.rel_notes[self.rel_list[self.cur_pos][0]][
-                self.rel_list[self.cur_pos][1]
-            ][self.rel_list[self.cur_pos][2]]
+            major, minor, patch = self.rel_list[self.cur_pos]
+            element = {major: {minor: {patch: self.rel_notes[major][minor][patch]}}}
             self.cur_pos += 1
             return element
         else:

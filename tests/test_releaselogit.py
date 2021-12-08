@@ -494,18 +494,30 @@ class TestReleaseLogIt:
         elements = iter(t_releaselogit)
 
         assert next(elements) == {
-            "Description": [
-                "List all the changes to the project here.",
-                "Changes listed here will be in the release notes under the above heading.",
-            ],
-            "Title": "Creation of the project",
+            "0": {
+                "0": {
+                    "0": {
+                        "Description": [
+                            "List all the changes to the project here.",
+                            "Changes listed here will be in the release notes under the above heading.",
+                        ],
+                        "Title": "Creation of the project",
+                    }
+                }
+            }
         }
         assert next(elements) == {
-            "Description": [
-                "Changes for 0.0.1 are listed here.",
-                "Add as many description lines as you like.",
-            ],
-            "Title": "This is a new release.",
+            "0": {
+                "0": {
+                    "1": {
+                        "Description": [
+                            "Changes for 0.0.1 are listed here.",
+                            "Add as many description lines as you like.",
+                        ],
+                        "Title": "This is a new release.",
+                    }
+                }
+            }
         }
         with pytest.raises(StopIteration):
             assert next(elements)

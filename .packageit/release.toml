@@ -1,11 +1,14 @@
+[0.15.0]
+Title = 'Ver 0.15.0'
+Description = ['__next__ must return the release specification.',
+               '- After the version was removed as a key in the release note, it is impossible to determine the actual release of the release note. Change the code to return the entire dictionary record including the release specification..']
+
 [0.14.0]
-Version = '0.14.0'
 Title = 'Ver 0.14.0'
 Description = ['Radd_release_note returns incorrect value.',
                '-If add_release_note is unsuccessful, add_release_note still returns True.']
 
 [0.13.0]
-Version = '0.13.0'
 Title = 'Ver 0.13.0'
 Description = ['Remove "FileChanges" from release.toml.',
                '- It was a good idea at the time but not necessary because the changes to files should (are) rather be tracked in git self',
@@ -13,18 +16,15 @@ Description = ['Remove "FileChanges" from release.toml.',
                '- Version option in release.toml is unnecessary and creates a point of failure due to duplication in the toml file. The section already contains the version and it is inherent in the dict structure .']
 
 [0.12.0]
-Version = '0.12.0'
 Title = 'Ver 0.12.0'
 Description = ['Update .packageit/release.toml with he latest releases notes.']
 
 [0.11.0]
-Version = '0.11.0'
 Title = 'Ver 0.11.0'
 Description = ['Improve __repr__ to display',
                '- repr must return self.cur_pos and rel_list[self.cur_pos]']
 
 [0.10.0]
-Version = '0.10.0'
 Title = 'Ver 0.10.0'
 Description = ['Rename class, add new methods and discontinue setup.py',
                '- Add oldest method. Return the first (oldest) release notes',
@@ -33,18 +33,15 @@ Description = ['Rename class, add new methods and discontinue setup.py',
                '- Rename the class to ReleaseLogIt because it is a collection (log) of release notes.']
 
 [0.9.0]
-Version = '0.9.0'
 Title = 'Ver 0.9.0'
 Description = ['Add "write_toml"',
                '- Export the contents to a toml file.']
 
 [0.8.0]
-Version = '0.8.0'
 Title = 'Ver 0.8.0'
 Description = ['Rename get_release_note to get_release_note_by_title to enable the creation of get_release_note_by_version method']
 
 [0.7.0]
-Version = '0.7.0'
 Title = 'Ver 0.7.0'
 Description = ['Add "get_tags" method to return a list of tags for the current repo',
                'Rename class attributes to be more relevant or shorter and consistent.',
@@ -53,41 +50,34 @@ Description = ['Add "get_tags" method to return a list of tags for the current r
                '- Rename self.element_cntr -> rel_cntr']
 
 [0.6.0]
-Version = '0.6.0'
 Title = 'Ver 0.6.0'
 Description = ['Add "get_release_titles" method',
                '- Return a list off all the titles in the release notes.']
 
 [0.5.0]
-Version = '0.5.0'
 Title = 'Ver 0.5.0'
 Description = ['Add a release note to the current release notes.']
 
 [0.4.0]
-Version = '0.4.0'
 Title = 'Ver 0.4.0'
 Description = ['Validate release notes is in the correct format.']
 
 [0.3.0]
-Version = '0.3.0'
 Title = 'Ver 0.3.0'
 Description = ['Add "get_release_notes"',
                '-Get the release notes for the release searching by title.']
 
 [0.2.0]
-Version = '0.2.0'
 Title = 'Ver 0.2.0'
 Description = ['PyGitHub uses "title" in their naming conventions for releases. To conform with this naming convention:',
                '- Change the "has_header" method name to "has_title"',
                '- Chenge the "Header" key in the toml structure to "Title"']
 
 [0.1.0]
-Version = '0.1.0'
 Title = 'Ver 0.1.0'
 Description = ['Check if a "Header" exist. Fi it does, return the detail of the release entry.']
 
 [0.0.7]
-Version = '0.0.7'
 Title = 'Ver 0.0.7'
 Description = ['Change release.toml structure to contains file and description changes in a list ',
                '- Move the "DescriptionXX" keys to a list',
@@ -96,13 +86,11 @@ Description = ['Change release.toml structure to contains file and description c
                '- Remove the "Release.X.X.X.Changes" key']
 
 [0.0.6]
-Version = '0.0.6'
 Title = 'Ver 0.0.6'
 Description = ['Add "version" descriptor to "Detail" section of release.toml.',
                '- General automated updates by PackageIt']
 
 [0.0.5]
-Version = '0.0.5'
 Title = 'Ver 0.0.5'
 Description = ['Enhance toml structure to include a header and description',
                '- Manually update .packageit/release.toml with changes.',
@@ -110,12 +98,10 @@ Description = ['Enhance toml structure to include a header and description',
                '- Enhance .packageit/release.toml with more information about the release including "Detail" and "Changes" sections.',]
 
 [0.0.4]
-Version = '0.0.4'
 Title = 'Ver 0.0.4'
 Description = ['The current structure only accommodate the semantic versioning with a simple description of the new release. The intention is to change the structure so that it also include a description for the changes to the individual files. These descriptions can then be used as the commit message during the commit process in an effort to automate the git commit process.']
 
 [0.0.3]
-Version = '0.0.3'
 Title = 'Ver 0.0.3'
 Description = ['Change the pytest strategy from individual test files to include all in a class',
                'Add requirements to requirements* files.',
@@ -123,11 +109,9 @@ Description = ['Change the pytest strategy from individual test files to include
                'General automated updates by PackageIt']
 
 [0.0.2]
-Version = '0.0.2'
 Title = 'Ver 0.0.2'
 Description = ['Experiment with tags and versions']
 
 [0.0.1]
-Version = '0.0.1'
 Title = 'Ver 0.0.1'
 Description = ['Create the project from templates and the defaults.']
