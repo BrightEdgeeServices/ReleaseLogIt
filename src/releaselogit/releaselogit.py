@@ -172,6 +172,9 @@ class ReleaseLogIt:
             self.rel_list[-1][2]
         ]
 
+    def latest_version(self):
+        return f"{self.rel_list[-1][0]}.{self.rel_list[-1][1]}.{self.rel_list[-1][2]}"
+
     def oldest(self):
         return self.rel_notes[self.rel_list[0][0]][self.rel_list[0][1]][
             self.rel_list[0][2]

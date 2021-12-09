@@ -786,6 +786,16 @@ class TestReleaseLogIt:
         }
         pass
 
+    def test_latest_version(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
+
+        t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
+
+        assert t_releaselogit.latest_version() == "2.2.2"
+        pass
+
     def test_oldest(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
