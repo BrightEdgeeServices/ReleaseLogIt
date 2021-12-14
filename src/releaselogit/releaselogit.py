@@ -18,7 +18,6 @@ from beetools.beearchiver import Archiver
 _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
 _PROJ_NAME = _PROJ_PATH.stem
-_PROJ_VERSION = "0.0.3"
 
 _TOML_CONTENTS_DEF = """
 [0.0.0]
@@ -267,17 +266,12 @@ def do_examples(p_cls=True):
     return success
 
 
-def do_example1(p_cls=True):
+def do_example1():
     """A working example of the implementation of ReleaseIt.
 
     Example1 illustrate the following concepts:
     1. Creates to object
     2. Create a default 'release.toml' file in teh designated (temp) directory
-
-    Parameters
-    ----------
-    p_cls : bool, default = True
-        Clear the screen or not at startup of Archiver
 
     Returns
     -------
