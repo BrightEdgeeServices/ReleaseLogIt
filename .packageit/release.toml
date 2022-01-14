@@ -1,7 +1,7 @@
 [0.17.0]
 Title = "Version 0.17.0"
-Description = [ "Ver 0.16.1", "[Enhancement]: Add GitHubIssues to release.toml",]
-GitHubIssues = [ 23,]
+Description = [ "Ver 0.16.1", "[Enhancement]: Add GitHubIssues to release.toml", "[Bug]: Version sorting incorrect.",]
+GitHubIssues = [ 23, 24,]
 
 [0.16.1]
 Title = "Version 0.16.1"

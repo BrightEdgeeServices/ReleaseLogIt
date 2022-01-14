@@ -65,16 +65,16 @@ Description = ['Description line 1 of release 0.0.0',
                'Description line 2 of release 0.0.0']
 GitHubIssues = []
 
-[0.0.1]
-Title = 'Release 0.0.1.'
-Description = ['Description line 1 of release 0.0.1',
-               'Description line 2 of release 0.0.1']
+[0.0.9]
+Title = 'Release 0.0.9.'
+Description = ['Description line 1 of release 0.0.9',
+               'Description line 2 of release 0.0.9']
 GitHubIssues = []
 
-[0.0.2]
-Title = 'Release 0.0.2.'
-Description = ['Description line 1 of release 0.0.2',
-               'Description line 2 of release 0.0.2']
+[0.0.10]
+Title = 'Release 0.0.10.'
+Description = ['Description line 1 of release 0.0.10',
+               'Description line 2 of release 0.0.10']
 GitHubIssues = []
 
 [0.1.0]
@@ -209,16 +209,16 @@ Description = ['Description line 1 of release 2.2.2',
                'Description line 2 of release 2.2.2']
 GitHubIssues = []
 
-[2.2.1]
-Title = 'Release 2.2.1.'
-Description = ['Description line 1 of release 2.2.1',
-               'Description line 2 of release 2.2.1']
+[2.2.9]
+Title = 'Release 2.2.9.'
+Description = ['Description line 1 of release 2.2.9',
+               'Description line 2 of release 2.2.9']
 GitHubIssues = []
 
-[2.2.0]
-Title = 'Release 2.2.0.'
-Description = ['Description line 1 of release 2.2.0',
-               'Description line 2 of release 2.2.0']
+[2.2.10]
+Title = 'Release 2.2.10.'
+Description = ['Description line 1 of release 2.2.10',
+               'Description line 2 of release 2.2.10']
 GitHubIssues = []
 """
 _TOML_CONTENTS_EXTENDED_STRUCT = {
@@ -232,20 +232,20 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                 "Title": "Release 0.0.0.",
                 "GitHubIssues": [],
             },
-            "1": {
+            "10": {
                 "Description": [
-                    "Description line 1 of release 0.0.1",
-                    "Description line 2 of release 0.0.1",
+                    "Description line 1 of release 0.0.10",
+                    "Description line 2 of release 0.0.10",
                 ],
-                "Title": "Release 0.0.1.",
+                "Title": "Release 0.0.10.",
                 "GitHubIssues": [],
             },
-            "2": {
+            "9": {
                 "Description": [
-                    "Description line 1 of release 0.0.2",
-                    "Description line 2 of release 0.0.2",
+                    "Description line 1 of release 0.0.9",
+                    "Description line 2 of release 0.0.9",
                 ],
-                "Title": "Release 0.0.2.",
+                "Title": "Release 0.0.9.",
                 "GitHubIssues": [],
             },
         },
@@ -436,20 +436,12 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
             },
         },
         "2": {
-            "0": {
+            "10": {
                 "Description": [
-                    "Description line 1 of release 2.2.0",
-                    "Description line 2 of release 2.2.0",
+                    "Description line 1 of release 2.2.10",
+                    "Description line 2 of release 2.2.10",
                 ],
-                "Title": "Release 2.2.0.",
-                "GitHubIssues": [],
-            },
-            "1": {
-                "Description": [
-                    "Description line 1 of release 2.2.1",
-                    "Description line 2 of release 2.2.1",
-                ],
-                "Title": "Release 2.2.1.",
+                "Title": "Release 2.2.10.",
                 "GitHubIssues": [],
             },
             "2": {
@@ -458,6 +450,14 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.2",
                 ],
                 "Title": "Release 2.2.2.",
+                "GitHubIssues": [],
+            },
+            "9": {
+                "Description": [
+                    "Description line 1 of release 2.2.9",
+                    "Description line 2 of release 2.2.9",
+                ],
+                "Title": "Release 2.2.9.",
                 "GitHubIssues": [],
             },
         },
@@ -502,8 +502,8 @@ class TestReleaseLogIt:
         assert t_releaselogit.rel_notes == _TOML_CONTENTS_EXTENDED_STRUCT
         assert t_releaselogit.rel_list == [
             ["0", "0", "0"],
-            ["0", "0", "1"],
-            ["0", "0", "2"],
+            ["0", "0", "9"],
+            ["0", "0", "10"],
             ["0", "1", "0"],
             ["0", "1", "1"],
             ["0", "1", "2"],
@@ -525,9 +525,9 @@ class TestReleaseLogIt:
             ["2", "1", "0"],
             ["2", "1", "1"],
             ["2", "1", "2"],
-            ["2", "2", "0"],
-            ["2", "2", "1"],
             ["2", "2", "2"],
+            ["2", "2", "9"],
+            ["2", "2", "10"],
         ]
         assert t_releaselogit.src_pth.exists()
         assert t_releaselogit.success
@@ -850,10 +850,10 @@ class TestReleaseLogIt:
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
 
         assert t_releaselogit.latest() == {
-            "Title": "Release 2.2.2.",
+            "Title": "Release 2.2.10.",
             "Description": [
-                "Description line 1 of release 2.2.2",
-                "Description line 2 of release 2.2.2",
+                "Description line 1 of release 2.2.10",
+                "Description line 2 of release 2.2.10",
             ],
             "GitHubIssues": [],
         }
@@ -866,7 +866,7 @@ class TestReleaseLogIt:
 
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
 
-        assert t_releaselogit.latest_version() == "2.2.2"
+        assert t_releaselogit.latest_version() == "2.2.10"
         pass
 
     def test_oldest(self, setup_env):
@@ -884,6 +884,44 @@ class TestReleaseLogIt:
             ],
             "GitHubIssues": [],
         }
+        pass
+
+    def test_sort(self, setup_env):
+        """Assert class __init__"""
+        working_dir = setup_env
+        (working_dir / "release.toml").write_text(_TOML_CONTENTS_EXTENDED_CONTENTS)
+
+        t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
+
+        assert t_releaselogit.rel_list == [
+            ['0', '0', '0'],
+            ['0', '0', '9'],
+            ['0', '0', '10'],
+            ['0', '1', '0'],
+            ['0', '1', '1'],
+            ['0', '1', '2'],
+            ['0', '2', '0'],
+            ['0', '2', '1'],
+            ['0', '2', '2'],
+            ['1', '0', '0'],
+            ['1', '0', '1'],
+            ['1', '0', '2'],
+            ['1', '1', '0'],
+            ['1', '1', '1'],
+            ['1', '1', '2'],
+            ['1', '2', '0'],
+            ['1', '2', '1'],
+            ['1', '2', '2'],
+            ['2', '0', '0'],
+            ['2', '0', '1'],
+            ['2', '0', '2'],
+            ['2', '1', '0'],
+            ['2', '1', '1'],
+            ['2', '1', '2'],
+            ['2', '2', '2'],
+            ['2', '2', '9'],
+            ['2', '2', '10'],
+        ]
         pass
 
     def test_validate_release_notes(self, setup_env):
