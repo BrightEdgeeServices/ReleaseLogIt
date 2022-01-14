@@ -19,4 +19,5 @@ pytest-cov
 sphinx-autobuild
 sphinx
 termcolor
+toml
 twine

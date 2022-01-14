@@ -2,9 +2,8 @@
 
 ReleaseIt keeps release notes for Python projects in a dict structure.
 It aims to standardise, facilitate and automate the management of
-release notes when publishing a project to GitHub, PyPI and
-ReadTheDocs.  It is developed as part of the PackageIt project, but can
-be used independently as well.
+release notes when publishing a project to GitHub, PyPI and ReadTheDocs.  It
+is developed as part of the PackageIt project, but can be used independently as well.
 
 See also https://pypi.org/project/PackageIt/
 """
@@ -24,6 +23,7 @@ _TOML_CONTENTS_DEF = """
 Title = 'Creation of the project'
 Description = ['List all the changes to the project here.',
                'Changes listed here will be in the release notes under the above heading.']
+GitHubIssues = []
 """
 
 

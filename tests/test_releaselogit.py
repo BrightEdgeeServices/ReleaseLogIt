@@ -21,6 +21,7 @@ _TOML_CONTENTS_DEF_STRUCT = {
                     "Changes listed here will be in the release notes under the above heading.",
                 ],
                 "Title": "Creation of the project",
+                "GitHubIssues": [],
             },
         }
     }
@@ -29,10 +30,12 @@ _TOML_CONTENTS_EXIST_CONTENTS = """\
 [0.0.0]
 Title = "Creation of the project"
 Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
+GitHubIssues = []
 
 [0.0.1]
 Title = "This is a new release."
 Description = [ "Changes for 0.0.1 are listed here.", "Add as many description lines as you like.",]
+GitHubIssues = []
 """
 _TOML_CONTENTS_EXIST_STRUCT = {
     "0": {
@@ -43,6 +46,7 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                     "Changes listed here will be in the release notes under the above heading.",
                 ],
                 "Title": "Creation of the project",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -50,6 +54,7 @@ _TOML_CONTENTS_EXIST_STRUCT = {
                     "Add as many description lines as you like.",
                 ],
                 "Title": "This is a new release.",
+                "GitHubIssues": [],
             },
         }
     }
@@ -58,136 +63,163 @@ _TOML_CONTENTS_EXTENDED_CONTENTS = """[0.0.0]
 Title = 'Release 0.0.0.'
 Description = ['Description line 1 of release 0.0.0',
                'Description line 2 of release 0.0.0']
+GitHubIssues = []
 
 [0.0.1]
 Title = 'Release 0.0.1.'
 Description = ['Description line 1 of release 0.0.1',
                'Description line 2 of release 0.0.1']
+GitHubIssues = []
 
 [0.0.2]
 Title = 'Release 0.0.2.'
 Description = ['Description line 1 of release 0.0.2',
                'Description line 2 of release 0.0.2']
+GitHubIssues = []
 
 [0.1.0]
 Title = 'Release 0.1.0.'
 Description = ['Description line 1 of release 0.1.0',
                'Description line 2 of release 0.1.0']
+GitHubIssues = []
 
 [0.1.1]
 Title = 'Release 0.1.1.'
 Description = ['Description line 1 of release 0.1.1',
                'Description line 2 of release 0.1.1']
+GitHubIssues = []
 
 [0.1.2]
 Title = 'Release 0.1.2.'
 Description = ['Description line 1 of release 0.1.2',
                'Description line 2 of release 0.1.2']
+GitHubIssues = []
 
 [0.2.0]
 Title = 'Release 0.2.0.'
 Description = ['Description line 1 of release 0.2.0',
                'Description line 2 of release 0.2.0']
+GitHubIssues = []
 
 [0.2.1]
 Title = 'Release 0.2.1.'
 Description = ['Description line 1 of release 0.2.1',
                'Description line 2 of release 0.2.1']
+GitHubIssues = []
 
 [0.2.2]
 Title = 'Release 0.2.2.'
 Description = ['Description line 1 of release 0.2.2',
                'Description line 2 of release 0.2.2']
+GitHubIssues = []
 
 [1.0.0]
 Title = 'Release 1.0.0.'
 Description = ['Description line 1 of release 1.0.0',
                'Description line 2 of release 1.0.0']
+GitHubIssues = []
 
 [1.0.1]
 Title = 'Release 1.0.1.'
 Description = ['Description line 1 of release 1.0.1',
                'Description line 2 of release 1.0.1']
+GitHubIssues = []
 
 [1.0.2]
 Title = 'Release 1.0.2.'
 Description = ['Description line 1 of release 1.0.2',
                'Description line 2 of release 1.0.2']
+GitHubIssues = []
 
 [1.1.0]
 Title = 'Release 1.1.0.'
 Description = ['Description line 1 of release 1.1.0',
                'Description line 2 of release 1.1.0']
+GitHubIssues = []
 
 [1.1.1]
 Title = 'Release 1.1.1.'
 Description = ['Description line 1 of release 1.1.1',
                'Description line 2 of release 1.1.1']
+GitHubIssues = []
 
 [1.1.2]
 Title = 'Release 1.1.2.'
 Description = ['Description line 1 of release 1.1.2',
                'Description line 2 of release 1.1.2']
+GitHubIssues = []
 
 [1.2.0]
 Title = 'Release 1.2.0.'
 Description = ['Description line 1 of release 1.2.0',
                'Description line 2 of release 1.2.0']
+GitHubIssues = []
 
 [1.2.1]
 Title = 'Release 1.2.1.'
 Description = ['Description line 1 of release 1.2.1',
                'Description line 2 of release 1.2.1']
+GitHubIssues = []
 
 [1.2.2]
 Title = 'Release 1.2.2.'
 Description = ['Description line 1 of release 1.2.2',
                'Description line 2 of release 1.2.2']
+GitHubIssues = []
 
 [2.0.0]
 Title = 'Release 2.0.0.'
 Description = ['Description line 1 of release 2.0.0',
                'Description line 2 of release 2.0.0']
+GitHubIssues = []
 
 [2.0.1]
 Title = 'Release 2.0.1.'
 Description = ['Description line 1 of release 2.0.1',
                'Description line 2 of release 2.0.1']
+GitHubIssues = []
 
 [2.0.2]
 Title = 'Release 2.0.2.'
 Description = ['Description line 1 of release 2.0.2',
                'Description line 2 of release 2.0.2']
+GitHubIssues = []
 
 [2.1.0]
 Title = 'Release 2.1.0.'
 Description = ['Description line 1 of release 2.1.0',
                'Description line 2 of release 2.1.0']
+GitHubIssues = []
 
 [2.1.1]
 Title = 'Release 2.1.1.'
 Description = ['Description line 1 of release 2.1.1',
                'Description line 2 of release 2.1.1']
+GitHubIssues = []
 
 [2.1.2]
 Title = 'Release 2.1.2.'
 Description = ['Description line 1 of release 2.1.2',
                'Description line 2 of release 2.1.2']
+GitHubIssues = []
 
 [2.2.2]
 Title = 'Release 2.2.2.'
 Description = ['Description line 1 of release 2.2.2',
                'Description line 2 of release 2.2.2']
+GitHubIssues = []
 
 [2.2.1]
 Title = 'Release 2.2.1.'
 Description = ['Description line 1 of release 2.2.1',
                'Description line 2 of release 2.2.1']
+GitHubIssues = []
 
 [2.2.0]
 Title = 'Release 2.2.0.'
 Description = ['Description line 1 of release 2.2.0',
                'Description line 2 of release 2.2.0']
+GitHubIssues = []
 """
 _TOML_CONTENTS_EXTENDED_STRUCT = {
     "0": {
@@ -198,6 +230,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.0",
                 ],
                 "Title": "Release 0.0.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -205,6 +238,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.1",
                 ],
                 "Title": "Release 0.0.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -212,6 +246,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.0.2",
                 ],
                 "Title": "Release 0.0.2.",
+                "GitHubIssues": [],
             },
         },
         "1": {
@@ -221,6 +256,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.0",
                 ],
                 "Title": "Release 0.1.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -228,6 +264,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.1",
                 ],
                 "Title": "Release 0.1.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -235,6 +272,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.1.2",
                 ],
                 "Title": "Release 0.1.2.",
+                "GitHubIssues": [],
             },
         },
         "2": {
@@ -244,6 +282,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.0",
                 ],
                 "Title": "Release 0.2.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -251,6 +290,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.1",
                 ],
                 "Title": "Release 0.2.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -258,6 +298,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 0.2.2",
                 ],
                 "Title": "Release 0.2.2.",
+                "GitHubIssues": [],
             },
         },
     },
@@ -269,6 +310,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.0",
                 ],
                 "Title": "Release 1.0.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -276,6 +318,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.1",
                 ],
                 "Title": "Release 1.0.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -283,6 +326,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.0.2",
                 ],
                 "Title": "Release 1.0.2.",
+                "GitHubIssues": [],
             },
         },
         "1": {
@@ -292,6 +336,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.0",
                 ],
                 "Title": "Release 1.1.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -299,6 +344,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.1",
                 ],
                 "Title": "Release 1.1.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -306,6 +352,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.1.2",
                 ],
                 "Title": "Release 1.1.2.",
+                "GitHubIssues": [],
             },
         },
         "2": {
@@ -315,6 +362,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.0",
                 ],
                 "Title": "Release 1.2.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -322,6 +370,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.1",
                 ],
                 "Title": "Release 1.2.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -329,6 +378,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 1.2.2",
                 ],
                 "Title": "Release 1.2.2.",
+                "GitHubIssues": [],
             },
         },
     },
@@ -340,6 +390,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.0",
                 ],
                 "Title": "Release 2.0.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -347,6 +398,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.1",
                 ],
                 "Title": "Release 2.0.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -354,6 +406,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.0.2",
                 ],
                 "Title": "Release 2.0.2.",
+                "GitHubIssues": [],
             },
         },
         "1": {
@@ -363,6 +416,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.0",
                 ],
                 "Title": "Release 2.1.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -370,6 +424,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.1",
                 ],
                 "Title": "Release 2.1.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -377,6 +432,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.1.2",
                 ],
                 "Title": "Release 2.1.2.",
+                "GitHubIssues": [],
             },
         },
         "2": {
@@ -386,6 +442,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.0",
                 ],
                 "Title": "Release 2.2.0.",
+                "GitHubIssues": [],
             },
             "1": {
                 "Description": [
@@ -393,6 +450,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.1",
                 ],
                 "Title": "Release 2.2.1.",
+                "GitHubIssues": [],
             },
             "2": {
                 "Description": [
@@ -400,6 +458,7 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
                     "Description line 2 of release 2.2.2",
                 ],
                 "Title": "Release 2.2.2.",
+                "GitHubIssues": [],
             },
         },
     },
@@ -502,6 +561,7 @@ class TestReleaseLogIt:
                             "Changes listed here will be in the release notes under the above heading.",
                         ],
                         "Title": "Creation of the project",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -515,6 +575,7 @@ class TestReleaseLogIt:
                             "Add as many description lines as you like.",
                         ],
                         "Title": "This is a new release.",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -554,6 +615,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 1.0.0",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -568,6 +630,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.1.0",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -581,6 +644,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.0.1",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -594,6 +658,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.0.0",
+                        "GitHubIssues": [],
                     }
                 }
             }
@@ -604,6 +669,7 @@ class TestReleaseLogIt:
                 "Description line 2.",
             ],
             "Title": "Release change 0.0.0",
+            "GitHubIssues": [],
         }
 
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
@@ -622,6 +688,7 @@ class TestReleaseLogIt:
                             "Changes listed here will be in the release notes under the above heading.",
                         ],
                         "Title": "Creation of the project",
+                        "GitHubIssues": [],
                     },
                     "1": {
                         "Description": [
@@ -629,6 +696,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.0.1",
+                        "GitHubIssues": [],
                     },
                 },
                 "1": {
@@ -638,6 +706,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 0.1.0",
+                        "GitHubIssues": [],
                     },
                 },
             },
@@ -649,6 +718,7 @@ class TestReleaseLogIt:
                             "Description line 2.",
                         ],
                         "Title": "Release change 1.0.0",
+                        "GitHubIssues": [],
                     }
                 }
             },
@@ -725,6 +795,7 @@ class TestReleaseLogIt:
                 "Description line 1 of release 1.1.1",
                 "Description line 2 of release 1.1.1",
             ],
+            "GitHubIssues": [],
         }
         assert t_releaselogit.get_release_note_by_title("Release 9.9.9.") is None
 
@@ -741,6 +812,7 @@ class TestReleaseLogIt:
                 "Description line 1 of release 1.1.1",
                 "Description line 2 of release 1.1.1",
             ],
+            "GitHubIssues": [],
         }
         assert t_releaselogit.get_release_note_by_version("9.9.9") is None
         pass
@@ -783,6 +855,7 @@ class TestReleaseLogIt:
                 "Description line 1 of release 2.2.2",
                 "Description line 2 of release 2.2.2",
             ],
+            "GitHubIssues": [],
         }
         pass
 
@@ -809,6 +882,7 @@ class TestReleaseLogIt:
                 "Description line 1 of release 0.0.0",
                 "Description line 2 of release 0.0.0",
             ],
+            "GitHubIssues": [],
         }
         pass
 

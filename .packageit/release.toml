@@ -1,3 +1,8 @@
+[0.17.0]
+Title = 'Ver 0.16.1'
+Description = ['[Enhancement]: Add GitHubIssues to release.toml']
+GitHubIssues = [23]
+
 [0.16.1]
 Title = 'Ver 0.16.1'
 Description = ['Clean up.',
