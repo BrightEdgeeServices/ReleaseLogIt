@@ -181,13 +181,13 @@ class ReleaseLogIt:
 
     def _sort(self):
         self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: release_notes[2]
+            self.rel_list, key=lambda release_notes: int(release_notes[2])
         )
         self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: release_notes[1]
+            self.rel_list, key=lambda release_notes: int(release_notes[1])
         )
         self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: release_notes[0]
+            self.rel_list, key=lambda release_notes: int(release_notes[0])
         )
         return self.rel_list
 
