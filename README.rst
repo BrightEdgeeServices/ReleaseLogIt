@@ -1,43 +1,43 @@
-.. image:: https://img.shields.io/pypi/status/ReleaseIt
+.. image:: https://img.shields.io/pypi/status/ReleaseLogIt
     :alt: PyPI - Status
 
-.. image:: https://img.shields.io/pypi/wheel/ReleaseIt
+.. image:: https://img.shields.io/pypi/wheel/ReleaseLogIt
     :alt: PyPI - Wheel
 
-.. image:: https://img.shields.io/pypi/pyversions/ReleaseIt
+.. image:: https://img.shields.io/pypi/pyversions/ReleaseLogIt
     :alt: PyPI - Python Version
 
-.. image:: https://img.shields.io/github/v/release/hendrikdutoit/ReleaseIt
+.. image:: https://img.shields.io/github/v/release/hendrikdutoit/ReleaseLogIt
     :alt: GitHub release (latest by date)
 
-.. image:: https://img.shields.io/github/license/hendrikdutoit/ReleaseIt
+.. image:: https://img.shields.io/github/license/hendrikdutoit/ReleaseLogIt
     :alt: License
 
-.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/ReleaseIt
+.. image:: https://img.shields.io/github/issues-raw/hendrikdutoit/ReleaseLogIt
     :alt: GitHub issues
 
-.. image:: https://img.shields.io/pypi/dm/BEETest21
+.. image:: https://img.shields.io/pypi/dm/ReleaseLogIt
     :alt: PyPI - Downloads
 
-.. image:: https://img.shields.io/github/search/hendrikdutoit/ReleaseIt/GitHub hit
+.. image:: https://img.shields.io/github/search/hendrikdutoit/ReleaseLogIt/GitHub
     :alt: GitHub Searches
 
-.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/ReleaseIt
+.. image:: https://img.shields.io/codecov/c/gh/hendrikdutoit/ReleaseLogIt
     :alt: CodeCov
-    :target: https://app.codecov.io/gh/hendrikdutoit/ReleaseIt
+    :target: https://app.codecov.io/gh/hendrikdutoit/ReleaseLogIt
 
-.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/ReleaseIt/Pre-Commit
+.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/ReleaseLogIt/Pre-Commit
     :alt: GitHub Actions - Pre-Commit
-    :target: https://github.com/hendrikdutoit/ReleaseIt/actions/workflows/pre-commit.yaml
+    :target: https://github.com/hendrikdutoit/ReleaseLogIt/actions/workflows/pre-commit.yaml
 
-.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/ReleaseIt/CI
+.. image:: https://img.shields.io/github/workflow/status/hendrikdutoit/ReleaseLogIt/CI
     :alt: GitHub Actions - CI
-    :target: https://github.com/hendrikdutoit/ReleaseIt/actions/workflows/ci.yaml
+    :target: https://github.com/hendrikdutoit/ReleaseLogIt/actions/workflows/ci.yaml
 
-.. image:: https://img.shields.io/pypi/v/ReleaseIt
+.. image:: https://img.shields.io/pypi/v/ReleaseLogIt
     :alt: PyPi
 
-ReleaseIt manages release notes for Python projects.
+Manage release notes for Python projects.
 
     ReleaseIt keeps release notes for Python projects in a dict structure. It aims to standardise, facilitate and automate the management of release notes when publishing a project to GitHub, PyPI and ReadTheDocs. It is developed as part of the PackageIt project, but can be used independently as well. See also https://pypi.org/project/PackageIt/
 
@@ -51,7 +51,7 @@ Install the test dependencies.
 
 .. code-block:: bash
 
-    $ pip install - r requirements_test.txt
+    $ pip install -r requirements_test.txt
 
 Run the tests.
 
