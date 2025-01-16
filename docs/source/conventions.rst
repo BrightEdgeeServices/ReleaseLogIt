@@ -5,10 +5,10 @@
 Conventions
 ===========
 
-This document explains conventions and other importnt structural information.
+This document explains conventions and other important structural information.
 
 -------------
 74 Char Limit
 -------------
 
-74 characters includin py and rst
+74 characters including py and rst

@@ -2,24 +2,20 @@
 
 import copy
 from pathlib import Path
-import pytest
-from beetools.beearchiver import Archiver
-import releaselogit
 
+import pytest
+
+import releaselogit
 
 _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
 _PROJ_NAME = _PROJ_PATH.stem
 
-
 _TOML_CONTENTS_DEF_STRUCT = {
     "0": {
         "0": {
             "0": {
-                "Description": [
-                    "List all the changes to the project here.",
-                    "Changes listed here will be in the release notes under the above heading.",
-                ],
+                "Description": ["List all the changes here.", "Line 2 of your changes."],
                 "Title": "Creation of the project",
                 "GitHubIssues": [],
             },
@@ -29,30 +25,24 @@ _TOML_CONTENTS_DEF_STRUCT = {
 _TOML_CONTENTS_EXIST_CONTENTS = """\
 [0.0.0]
 Title = "Creation of the project"
-Description = [ "List all the changes to the project here.", "Changes listed here will be in the release notes under the above heading.",]
+Description = [ "List all the changes here.", "Line 2 of your changes.",]
 GitHubIssues = []
 
 [0.0.1]
 Title = "This is a new release."
-Description = [ "Changes for 0.0.1 are listed here.", "Add as many description lines as you like.",]
+Description = [ "Changes for 0.0.1.", "Line 2 of your changes.",]
 GitHubIssues = []
 """
 _TOML_CONTENTS_EXIST_STRUCT = {
     "0": {
         "0": {
             "0": {
-                "Description": [
-                    "List all the changes to the project here.",
-                    "Changes listed here will be in the release notes under the above heading.",
-                ],
+                "Description": ["List all the changes here.", "Line 2 of your changes."],
                 "Title": "Creation of the project",
                 "GitHubIssues": [],
             },
             "1": {
-                "Description": [
-                    "Changes for 0.0.1 are listed here.",
-                    "Add as many description lines as you like.",
-                ],
+                "Description": ["Changes for 0.0.1.", "Line 2 of your changes."],
                 "Title": "This is a new release.",
                 "GitHubIssues": [],
             },
@@ -61,164 +51,137 @@ _TOML_CONTENTS_EXIST_STRUCT = {
 }
 _TOML_CONTENTS_EXTENDED_CONTENTS = """[0.0.0]
 Title = 'Release 0.0.0.'
-Description = ['Description line 1 of release 0.0.0',
-               'Description line 2 of release 0.0.0']
+Description = ['Description line 1 of release 0.0.0', 'Description line 2 of release 0.0.0']
 GitHubIssues = []
 
 [0.0.9]
 Title = 'Release 0.0.9.'
-Description = ['Description line 1 of release 0.0.9',
-               'Description line 2 of release 0.0.9']
+Description = ['Description line 1 of release 0.0.9', 'Description line 2 of release 0.0.9']
 GitHubIssues = []
 
 [0.0.10]
 Title = 'Release 0.0.10.'
-Description = ['Description line 1 of release 0.0.10',
-               'Description line 2 of release 0.0.10']
+Description = ['Description line 1 of release 0.0.10', 'Description line 2 of release 0.0.10']
 GitHubIssues = []
 
 [0.1.0]
 Title = 'Release 0.1.0.'
-Description = ['Description line 1 of release 0.1.0',
-               'Description line 2 of release 0.1.0']
+Description = ['Description line 1 of release 0.1.0', 'Description line 2 of release 0.1.0']
 GitHubIssues = []
 
 [0.1.1]
 Title = 'Release 0.1.1.'
-Description = ['Description line 1 of release 0.1.1',
-               'Description line 2 of release 0.1.1']
+Description = ['Description line 1 of release 0.1.1', 'Description line 2 of release 0.1.1']
 GitHubIssues = []
 
 [0.1.2]
 Title = 'Release 0.1.2.'
-Description = ['Description line 1 of release 0.1.2',
-               'Description line 2 of release 0.1.2']
+Description = ['Description line 1 of release 0.1.2', 'Description line 2 of release 0.1.2']
 GitHubIssues = []
 
 [0.2.0]
 Title = 'Release 0.2.0.'
-Description = ['Description line 1 of release 0.2.0',
-               'Description line 2 of release 0.2.0']
+Description = ['Description line 1 of release 0.2.0', 'Description line 2 of release 0.2.0']
 GitHubIssues = []
 
 [0.2.1]
 Title = 'Release 0.2.1.'
-Description = ['Description line 1 of release 0.2.1',
-               'Description line 2 of release 0.2.1']
+Description = ['Description line 1 of release 0.2.1', 'Description line 2 of release 0.2.1']
 GitHubIssues = []
 
 [0.2.2]
 Title = 'Release 0.2.2.'
-Description = ['Description line 1 of release 0.2.2',
-               'Description line 2 of release 0.2.2']
+Description = ['Description line 1 of release 0.2.2', 'Description line 2 of release 0.2.2']
 GitHubIssues = []
 
 [1.0.0]
 Title = 'Release 1.0.0.'
-Description = ['Description line 1 of release 1.0.0',
-               'Description line 2 of release 1.0.0']
+Description = ['Description line 1 of release 1.0.0', 'Description line 2 of release 1.0.0']
 GitHubIssues = []
 
 [1.0.1]
 Title = 'Release 1.0.1.'
-Description = ['Description line 1 of release 1.0.1',
-               'Description line 2 of release 1.0.1']
+Description = ['Description line 1 of release 1.0.1', 'Description line 2 of release 1.0.1']
 GitHubIssues = []
 
 [1.0.2]
 Title = 'Release 1.0.2.'
-Description = ['Description line 1 of release 1.0.2',
-               'Description line 2 of release 1.0.2']
+Description = ['Description line 1 of release 1.0.2', 'Description line 2 of release 1.0.2']
 GitHubIssues = []
 
 [1.1.0]
 Title = 'Release 1.1.0.'
-Description = ['Description line 1 of release 1.1.0',
-               'Description line 2 of release 1.1.0']
+Description = ['Description line 1 of release 1.1.0', 'Description line 2 of release 1.1.0']
 GitHubIssues = []
 
 [1.1.1]
 Title = 'Release 1.1.1.'
-Description = ['Description line 1 of release 1.1.1',
-               'Description line 2 of release 1.1.1']
+Description = ['Description line 1 of release 1.1.1', 'Description line 2 of release 1.1.1']
 GitHubIssues = []
 
 [1.1.2]
 Title = 'Release 1.1.2.'
-Description = ['Description line 1 of release 1.1.2',
-               'Description line 2 of release 1.1.2']
+Description = ['Description line 1 of release 1.1.2', 'Description line 2 of release 1.1.2']
 GitHubIssues = []
 
 [1.2.0]
 Title = 'Release 1.2.0.'
-Description = ['Description line 1 of release 1.2.0',
-               'Description line 2 of release 1.2.0']
+Description = ['Description line 1 of release 1.2.0', 'Description line 2 of release 1.2.0']
 GitHubIssues = []
 
 [1.2.1]
 Title = 'Release 1.2.1.'
-Description = ['Description line 1 of release 1.2.1',
-               'Description line 2 of release 1.2.1']
+Description = ['Description line 1 of release 1.2.1', 'Description line 2 of release 1.2.1']
 GitHubIssues = []
 
 [1.2.2]
 Title = 'Release 1.2.2.'
-Description = ['Description line 1 of release 1.2.2',
-               'Description line 2 of release 1.2.2']
+Description = ['Description line 1 of release 1.2.2', 'Description line 2 of release 1.2.2']
 GitHubIssues = []
 
 [2.0.0]
 Title = 'Release 2.0.0.'
-Description = ['Description line 1 of release 2.0.0',
-               'Description line 2 of release 2.0.0']
+Description = ['Description line 1 of release 2.0.0', 'Description line 2 of release 2.0.0']
 GitHubIssues = []
 
 [2.0.1]
 Title = 'Release 2.0.1.'
-Description = ['Description line 1 of release 2.0.1',
-               'Description line 2 of release 2.0.1']
+Description = ['Description line 1 of release 2.0.1', 'Description line 2 of release 2.0.1']
 GitHubIssues = []
 
 [2.0.2]
 Title = 'Release 2.0.2.'
-Description = ['Description line 1 of release 2.0.2',
-               'Description line 2 of release 2.0.2']
+Description = ['Description line 1 of release 2.0.2', 'Description line 2 of release 2.0.2']
 GitHubIssues = []
 
 [2.1.0]
 Title = 'Release 2.1.0.'
-Description = ['Description line 1 of release 2.1.0',
-               'Description line 2 of release 2.1.0']
+Description = ['Description line 1 of release 2.1.0', 'Description line 2 of release 2.1.0']
 GitHubIssues = []
 
 [2.1.1]
 Title = 'Release 2.1.1.'
-Description = ['Description line 1 of release 2.1.1',
-               'Description line 2 of release 2.1.1']
+Description = ['Description line 1 of release 2.1.1', 'Description line 2 of release 2.1.1']
 GitHubIssues = []
 
 [2.1.2]
 Title = 'Release 2.1.2.'
-Description = ['Description line 1 of release 2.1.2',
-               'Description line 2 of release 2.1.2']
+Description = ['Description line 1 of release 2.1.2', 'Description line 2 of release 2.1.2']
 GitHubIssues = []
 
 [2.2.2]
 Title = 'Release 2.2.2.'
-Description = ['Description line 1 of release 2.2.2',
-               'Description line 2 of release 2.2.2']
+Description = ['Description line 1 of release 2.2.2', 'Description line 2 of release 2.2.2']
 GitHubIssues = []
 
 [2.2.9]
 Title = 'Release 2.2.9.'
-Description = ['Description line 1 of release 2.2.9',
-               'Description line 2 of release 2.2.9']
+Description = ['Description line 1 of release 2.2.9', 'Description line 2 of release 2.2.9']
 GitHubIssues = []
 
 [2.2.10]
 Title = 'Release 2.2.10.'
-Description = ['Description line 1 of release 2.2.10',
-               'Description line 2 of release 2.2.10']
+Description = ['Description line 1 of release 2.2.10', 'Description line 2 of release 2.2.10']
 GitHubIssues = []
 """
 _TOML_CONTENTS_EXTENDED_STRUCT = {
@@ -463,16 +426,13 @@ _TOML_CONTENTS_EXTENDED_STRUCT = {
         },
     },
 }
-b_tls = Archiver(_PROJ_DESC, _PROJ_PATH)
 
 
 class TestReleaseLogIt:
     def test__init__default(self, setup_env):
         """Assert class __init__"""
         working_dir = setup_env
-        t_releaselogit = releaselogit.ReleaseLogIt(
-            working_dir, p_parent_log_name=_PROJ_NAME
-        )
+        t_releaselogit = releaselogit.ReleaseLogIt(working_dir, p_parent_log_name=_PROJ_NAME)
         assert t_releaselogit.rel_notes == _TOML_CONTENTS_DEF_STRUCT
         assert t_releaselogit.rel_list == [["0", "0", "0"]]
         assert t_releaselogit.src_pth.exists()
@@ -556,10 +516,7 @@ class TestReleaseLogIt:
             "0": {
                 "0": {
                     "0": {
-                        "Description": [
-                            "List all the changes to the project here.",
-                            "Changes listed here will be in the release notes under the above heading.",
-                        ],
+                        "Description": ["List all the changes here.", "Line 2 of your changes."],
                         "Title": "Creation of the project",
                         "GitHubIssues": [],
                     }
@@ -570,10 +527,7 @@ class TestReleaseLogIt:
             "0": {
                 "0": {
                     "1": {
-                        "Description": [
-                            "Changes for 0.0.1 are listed here.",
-                            "Add as many description lines as you like.",
-                        ],
+                        "Description": ["Changes for 0.0.1.", "Line 2 of your changes."],
                         "Title": "This is a new release.",
                         "GitHubIssues": [],
                     }
@@ -683,10 +637,7 @@ class TestReleaseLogIt:
             "0": {
                 "0": {
                     "0": {
-                        "Description": [
-                            "List all the changes to the project here.",
-                            "Changes listed here will be in the release notes under the above heading.",
-                        ],
+                        "Description": ["List all the changes here.", "Line 2 of your changes."],
                         "Title": "Creation of the project",
                         "GitHubIssues": [],
                     },
@@ -894,33 +845,33 @@ class TestReleaseLogIt:
         t_releaselogit = releaselogit.ReleaseLogIt(working_dir)
 
         assert t_releaselogit.rel_list == [
-            ['0', '0', '0'],
-            ['0', '0', '9'],
-            ['0', '0', '10'],
-            ['0', '1', '0'],
-            ['0', '1', '1'],
-            ['0', '1', '2'],
-            ['0', '2', '0'],
-            ['0', '2', '1'],
-            ['0', '2', '2'],
-            ['1', '0', '0'],
-            ['1', '0', '1'],
-            ['1', '0', '2'],
-            ['1', '1', '0'],
-            ['1', '1', '1'],
-            ['1', '1', '2'],
-            ['1', '2', '0'],
-            ['1', '2', '1'],
-            ['1', '2', '2'],
-            ['2', '0', '0'],
-            ['2', '0', '1'],
-            ['2', '0', '2'],
-            ['2', '1', '0'],
-            ['2', '1', '1'],
-            ['2', '1', '2'],
-            ['2', '2', '2'],
-            ['2', '2', '9'],
-            ['2', '2', '10'],
+            ["0", "0", "0"],
+            ["0", "0", "9"],
+            ["0", "0", "10"],
+            ["0", "1", "0"],
+            ["0", "1", "1"],
+            ["0", "1", "2"],
+            ["0", "2", "0"],
+            ["0", "2", "1"],
+            ["0", "2", "2"],
+            ["1", "0", "0"],
+            ["1", "0", "1"],
+            ["1", "0", "2"],
+            ["1", "1", "0"],
+            ["1", "1", "1"],
+            ["1", "1", "2"],
+            ["1", "2", "0"],
+            ["1", "2", "1"],
+            ["1", "2", "2"],
+            ["2", "0", "0"],
+            ["2", "0", "1"],
+            ["2", "0", "2"],
+            ["2", "1", "0"],
+            ["2", "1", "1"],
+            ["2", "1", "2"],
+            ["2", "2", "2"],
+            ["2", "2", "9"],
+            ["2", "2", "10"],
         ]
         pass
 
@@ -931,17 +882,11 @@ class TestReleaseLogIt:
             "0": {
                 "0": {
                     "1": {
-                        "Description": [
-                            "Changes for 0.0.1 are listed here.",
-                            "Add as many description lines as you like.",
-                        ],
+                        "Description": ["Changes for 0.0.1.", "Line 2 of your changes."],
                         "Title": "Release 0.0.1",
                     },
                     "2": {
-                        "Description": [
-                            "Changes for 0.0.2 are listed here.",
-                            "Add as many description lines as you like.",
-                        ],
+                        "Description": ["Changes for 0.0.2 are listed here.", "Line 2 of your changes."],
                         "Title": "Release 0.0.2",
                     },
                 }
@@ -949,17 +894,11 @@ class TestReleaseLogIt:
             "1": {
                 "1": {
                     "1": {
-                        "Description": [
-                            "Changes for 1.1.1 are listed here.",
-                            "Add as many description lines as you like.",
-                        ],
+                        "Description": ["Changes for 1.1.1 are listed here.", "Line 2 of your changes."],
                         "Title": "Release 1.1.1",
                     },
                     "3": {
-                        "Description": [
-                            "Changes for 1.1.3 are listed here.",
-                            "Add as many description lines as you like.",
-                        ],
+                        "Description": ["Changes for 1.1.3 are listed here.", "Line 2 of your changes."],
                         "Title": "Release 1.1.3",
                     },
                 }
@@ -1014,6 +953,3 @@ class TestReleaseLogIt:
 
         assert t_releaselogit.src_pth.read_text() == _TOML_CONTENTS_EXIST_CONTENTS
         pass
-
-
-del b_tls
