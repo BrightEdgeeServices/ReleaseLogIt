@@ -1,31 +1,31 @@
 [0.17.0]
 Title = "Version 0.17.0"
-Description = [ "Ver 0.16.1", "[Enhancement]: Add GitHubIssues to release.toml", "[Bug]: Version sorting incorrect.",]
+Description = [ "Ver 0.16.1", "[Enhancement]: Add GitHubIssues to release.toml", "[Bug]: Version sorting incorrect."]
 GitHubIssues = [ 23, 24,]
 
 [0.16.1]
 Title = "Version 0.16.1"
-Description = [ "Ver 0.16.1", "Clean up.", "- Remove p_cls from Example1 parameter list", "- Add toml module to requirements.",]
+Description = [ "Ver 0.16.1", "Clean up.", "- Remove p_cls from Example1 parameter list", "- Add toml module to requirements."]
 
 [0.16.0]
 Title = "Version 0.16.0"
-Description = [ "Ver 0.16.0", "Return the latest version only as a string.", "- Add method to return the latest version only as a string.",]
+Description = [ "Ver 0.16.0", "Return the latest version only as a string.", "- Add method to return the latest version only as a string."]
 
 [0.15.0]
 Title = "Version 0.15.0"
-Description = [ "Ver 0.15.0", "__next__ must return the release specification.", "- After the version was removed as a key in the release note, it is impossible to determine the actual release of the release note. Change the code to return the entire dictionary record including the release specification..",]
+Description = [ "Ver 0.15.0", "__next__ must return the release specification.", "- After the version was removed as a key in the release note, it is impossible to determine the actual release of the release note. Change the code to return the entire dictionary record including the release specification.."]
 
 [0.14.0]
 Title = "Version 0.14.0"
-Description = [ "Ver 0.14.0", "Radd_release_note returns incorrect value.", "-If add_release_note is unsuccessful, add_release_note still returns True.",]
+Description = [ "Ver 0.14.0", "Radd_release_note returns incorrect value.", "-If add_release_note is unsuccessful, add_release_note still returns True."]
 
 [0.13.0]
 Title = "Version 0.13.0"
-Description = [ "Ver 0.13.0", "Remove \"FileChanges\" from release.toml.", "- It was a good idea at the time but not necessary because the changes to files should (are) rather be tracked in git self", "Discontinue Version option in release.toml", "- Version option in release.toml is unnecessary and creates a point of failure due to duplication in the toml file. The section already contains the version and it is inherent in the dict structure .",]
+Description = [ "Ver 0.13.0", "Remove \"FileChanges\" from release.toml.", "- It was a good idea at the time but not necessary because the changes to files should (are) rather be tracked in git self", "Discontinue Version option in release.toml", "- Version option in release.toml is unnecessary and creates a point of failure due to duplication in the toml file. The section already contains the version and it is inherent in the dict structure ."]
 
 [0.12.0]
 Title = "Version 0.12.0"
-Description = [ "Ver 0.12.0", "Update .packageit/release.toml with he latest releases notes.",]
+Description = [ "Ver 0.12.0", "Update .packageit/release.toml with he latest releases notes."]
 
 [0.11.0]
 Title = "Version 0.11.0"
@@ -33,11 +33,11 @@ Description = [ "Ver 0.11.0", "Improve __repr__ to display", "- repr must return
 
 [0.10.0]
 Title = "Version 0.10.0"
-Description = [ "Ver 0.10.0", "Rename class, add new methods and discontinue setup.py", "- Add oldest method. Return the first (oldest) release notes", "- Add latest method. Return the latest (last) release notes", "- Add repr dunder. Return the current release of curr_rel pointer", "- Rename the class to ReleaseLogIt because it is a collection (log) of release notes.",]
+Description = [ "Ver 0.10.0", "Rename class, add new methods and discontinue setup.py", "- Add oldest method. Return the first (oldest) release notes", "- Add latest method. Return the latest (last) release notes", "- Add repr dunder. Return the current release of curr_rel pointer", "- Rename the class to ReleaseLogIt because it is a collection (log) of release notes."]
 
 [0.9.0]
 Title = "Version 0.9.0"
-Description = [ "Ver 0.9.0", "Add \"write_toml\"", "- Export the contents to a toml file.",]
+Description = [ "Ver 0.9.0", "Add \"write_toml\"", "- Export the contents to a toml file."]
 
 [0.8.0]
 Title = "Version 0.8.0"
@@ -49,27 +49,27 @@ Description = [ "Ver 0.7.0", "Add \"get_tags\" method to return a list of tags f
 
 [0.6.0]
 Title = "Version 0.6.0"
-Description = [ "Ver 0.6.0", "Add \"get_release_titles\" method", "- Return a list off all the titles in the release notes.",]
+Description = [ "Ver 0.6.0", "Add \"get_release_titles\" method", "- Return a list off all the titles in the release notes."]
 
 [0.5.0]
 Title = "Version 0.5.0"
-Description = [ "Ver 0.5.0", "Add a release note to the current release notes.",]
+Description = [ "Ver 0.5.0", "Add a release note to the current release notes."]
 
 [0.4.0]
 Title = "Version 0.4.0"
-Description = [ "Ver 0.4.0", "Validate release notes is in the correct format.",]
+Description = [ "Ver 0.4.0", "Validate release notes is in the correct format."]
 
 [0.3.0]
 Title = "Version 0.3.0"
-Description = [ "Ver 0.3.0", "Add \"get_release_notes\"", "-Get the release notes for the release searching by title.",]
+Description = [ "Ver 0.3.0", "Add \"get_release_notes\"", "-Get the release notes for the release searching by title."]
 
 [0.2.0]
 Title = "Version 0.2.0"
-Description = [ "Ver 0.2.0", "PyGitHub uses \"title\" in their naming conventions for releases. To conform with this naming convention:", "- Change the \"has_header\" method name to \"has_title\"", "- Chenge the \"Header\" key in the toml structure to \"Title\"",]
+Description = [ "Ver 0.2.0", "PyGitHub uses \"title\" in their naming conventions for releases. To conform with this naming convention:", "- Change the \"has_header\" method name to \"has_title\"", "- Change the \"Header\" key in the toml structure to \"Title\"",]
 
 [0.1.0]
 Title = "Version 0.1.0"
-Description = [ "Ver 0.1.0", "Check if a \"Header\" exist. Fi it does, return the detail of the release entry.",]
+Description = [ "Ver 0.1.0", "Check if a \"Header\" exist. Fi it does, return the detail of the release entry."]
 
 [0.0.7]
 Title = "Version 0.0.7"
@@ -81,11 +81,11 @@ Description = [ "Ver 0.0.6", "Add \"version\" descriptor to \"Detail\" section o
 
 [0.0.5]
 Title = "Version 0.0.5"
-Description = [ "Ver 0.0.5", "Enhance toml structure to include a header and description", "- Manually update .packageit/release.toml with changes.", "- Update method parameters to in house standards.", "- Enhance .packageit/release.toml with more information about the release including \"Detail\" and \"Changes\" sections.",]
+Description = [ "Ver 0.0.5", "Enhance toml structure to include a header and description", "- Manually update .packageit/release.toml with changes.", "- Update method parameters to in house standards.", "- Enhance .packageit/release.toml with more information about the release including \"Detail\" and \"Changes\" sections."]
 
 [0.0.4]
 Title = "Version 0.0.4"
-Description = [ "Ver 0.0.4", "The current structure only accommodate the semantic versioning with a simple description of the new release. The intention is to change the structure so that it also include a description for the changes to the individual files. These descriptions can then be used as the commit message during the commit process in an effort to automate the git commit process.",]
+Description = [ "Ver 0.0.4", "The current structure only accommodate the semantic versioning with a simple description of the new release. The intention is to change the structure so that it also include a description for the changes to the individual files. These descriptions can then be used as the commit message during the commit process in an effort to automate the git commit process."]
 
 [0.0.3]
 Title = "Version 0.0.3"
@@ -97,4 +97,4 @@ Description = [ "Ver 0.0.2", "Experiment with tags and versions",]
 
 [0.0.1]
 Title = "Version 0.0.1"
-Description = [ "Ver 0.0.1", "Create the project from templates and the defaults.",]
+Description = [ "Ver 0.0.1", "Create the project from templates and the defaults."]

@@ -9,10 +9,10 @@ See also https://pypi.org/project/PackageIt/
 """
 
 import logging
-from pathlib import Path
 import tempfile
+from pathlib import Path
+
 import toml
-from beetools.beearchiver import Archiver
 
 _PROJ_DESC = __doc__.split("\n")[0]
 _PROJ_PATH = Path(__file__)
@@ -21,8 +21,8 @@ _PROJ_NAME = _PROJ_PATH.stem
 _TOML_CONTENTS_DEF = """
 [0.0.0]
 Title = 'Creation of the project'
-Description = ['List all the changes to the project here.',
-               'Changes listed here will be in the release notes under the above heading.']
+Description = ['List all the changes here.',
+               'Line 2 of your changes.']
 GitHubIssues = []
 """
 
@@ -53,7 +53,7 @@ class ReleaseLogIt:
         """
         self.success = True
         if p_parent_log_name:
-            self._log_name = "{}.{}".format(p_parent_log_name, _PROJ_NAME)
+            self._log_name = f"{p_parent_log_name}.{_PROJ_NAME}"
             self.logger = logging.getLogger(self._log_name)
         self.verbose = p_verbose
 
@@ -100,9 +100,7 @@ class ReleaseLogIt:
             if major in self.rel_notes.keys():
                 if minor in self.rel_notes[major].keys():
                     if patch not in self.rel_notes[major][minor].keys():
-                        self.rel_notes[major][minor][patch] = p_release_note[major][
-                            minor
-                        ][patch]
+                        self.rel_notes[major][minor][patch] = p_release_note[major][minor][patch]
                     else:
                         return False
                 else:
@@ -167,28 +165,18 @@ class ReleaseLogIt:
         return False
 
     def latest(self):
-        return self.rel_notes[self.rel_list[-1][0]][self.rel_list[-1][1]][
-            self.rel_list[-1][2]
-        ]
+        return self.rel_notes[self.rel_list[-1][0]][self.rel_list[-1][1]][self.rel_list[-1][2]]
 
     def latest_version(self):
         return f"{self.rel_list[-1][0]}.{self.rel_list[-1][1]}.{self.rel_list[-1][2]}"
 
     def oldest(self):
-        return self.rel_notes[self.rel_list[0][0]][self.rel_list[0][1]][
-            self.rel_list[0][2]
-        ]
+        return self.rel_notes[self.rel_list[0][0]][self.rel_list[0][1]][self.rel_list[0][2]]
 
     def _sort(self):
-        self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: int(release_notes[2])
-        )
-        self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: int(release_notes[1])
-        )
-        self.rel_list = sorted(
-            self.rel_list, key=lambda release_notes: int(release_notes[0])
-        )
+        self.rel_list = sorted(self.rel_list, key=lambda release_notes: int(release_notes[2]))
+        self.rel_list = sorted(self.rel_list, key=lambda release_notes: int(release_notes[1]))
+        self.rel_list = sorted(self.rel_list, key=lambda release_notes: int(release_notes[0]))
         return self.rel_list
 
     def _check_release_note(self, p_release_note):
@@ -204,14 +192,10 @@ class ReleaseLogIt:
                         if len(patch) == 1:
                             patch = list(patch)[0]
                             if isinstance(patch, str) and patch.isnumeric():
-                                release_note_contents = p_release_note[major][minor][
-                                    patch
-                                ]
+                                release_note_contents = p_release_note[major][minor][patch]
                                 if "Description" not in release_note_contents.keys():
                                     return False
-                                if not isinstance(
-                                    release_note_contents["Description"], list
-                                ):
+                                if not isinstance(release_note_contents["Description"], list):
                                     return False
                                 if len(release_note_contents["Description"]) <= 0:
                                     return False
@@ -229,9 +213,7 @@ class ReleaseLogIt:
         for major in p_release_notes:
             for minor in p_release_notes[major]:
                 for patch in p_release_notes[major][minor]:
-                    release = {
-                        major: {minor: {patch: p_release_notes[major][minor][patch]}}
-                    }
+                    release = {major: {minor: {patch: p_release_notes[major][minor][patch]}}}
                     if not self._check_release_note(release):
                         return False
         return True
@@ -259,10 +241,7 @@ def do_examples(p_cls=True):
         Execution status of the method
 
     """
-    b_tls = Archiver(_PROJ_DESC, _PROJ_PATH)
-    b_tls.print_header(p_cls)
     success = do_example1()
-    b_tls.print_footer()
     return success
 
 
@@ -271,7 +250,7 @@ def do_example1():
 
     Example1 illustrate the following concepts:
     1. Creates to object
-    2. Create a default 'release.toml' file in teh designated (temp) directory
+    2. Create a default 'release.toml' file in the designated (temp) directory
 
     Returns
     -------
