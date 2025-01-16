@@ -4,8 +4,8 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = 'ReleaseLogIt'
-version = '0.0.2'
-description = 'Template for new Python projects.'
+version = '0.18.0'
+description = 'Manage release notes for Python projects.'
 
 authors = [
     { name = "Hendrik du Toit", email = "hendrik@brightedge.co.za" }
