@@ -1,5 +1,9 @@
-# Release 0.0.1
+# Release 0.18.0
 
-## General Changes
-
-- Initial setup and configuration.
+- Update the ISSUE_TEMPLATE's
+- Rename the Workflow files from .yml to .yaml
+- Update the pre-commit hooks
+- Fix the Workflows
+- Remove the MANIFEST.in file
+- Adapt pyproject.toml with Poetry configurations.
+- Fix multi line Toml string errors.
